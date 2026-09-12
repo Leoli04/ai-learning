@@ -105,6 +105,23 @@ html, body {
 }
 .article pre code { background: none; border: none; padding: 0; font-size: 14px; line-height: 1.7; }
 
+/* ---------- 表格 ---------- */
+.article table {
+  width: 100%; border-collapse: separate; border-spacing: 0; margin: 18px 0;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; font-size: 14.5px;
+}
+.article th, .article td {
+  padding: 10px 14px; text-align: left; vertical-align: top;
+  border-bottom: 1px solid var(--border); line-height: 1.7;
+}
+.article th {
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 13px; font-weight: 700; letter-spacing: 1px;
+}
+.article tr:last-child td { border-bottom: none; }
+.article tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+
 .tip {
   background: rgba(63, 185, 80, 0.08); border: 1px solid rgba(63, 185, 80, 0.35);
   border-radius: 10px; padding: 12px 18px; margin: 18px 0; font-size: 15px;
