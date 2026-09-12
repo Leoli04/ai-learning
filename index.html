@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 学习笔记 · DeepSeek Harness 学习系列</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html">AI 学习笔记 <span>·</span> DeepSeek Harness</a>
+  <nav><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">GitHub ↗</a></nav>
+</div></header>
+
+<div class="container">
+<section class="hero">
+  <span class="badge">开源 Agent 框架</span>
+  <span class="badge">Everything is a Plugin</span>
+  <span class="badge">7 篇系列</span>
+  <h1>DeepSeek Harness<br><span class="hl">通俗图解学习笔记</span></h1>
+  <p class="lead">DeepSeek 官方开源的 Agent 框架（dsh）——"一切皆插件"。本系列用类比 + 图解，把它的架构掰开揉碎讲清楚。全部图解为手绘 SVG，无外部依赖，离线可读。</p>
+</section>
+
+<div class="article-list">
+  <a class="article-card" href="deepseek-harness/01-what-is-agent-harness.html">
+    <span class="num">01</span>
+    <h3>什么是 Agent Harness？</h3>
+    <p>LLM 是发动机，Harness 是整台车——为什么大模型外面必须套一层"工作服"</p>
+  </a>
+  <a class="article-card" href="deepseek-harness/02-everything-is-a-plugin.html">
+    <span class="num">02</span>
+    <h3>一切皆插件：没有特权核心</h3>
+    <p>模型、工具、会话、甚至主循环都是插件——Cordis 框架与可逆 effect</p>
+  </a>
+  <a class="article-card" href="deepseek-harness/03-profile-bundle-patch.html">
+    <span class="num">03</span>
+    <h3>启动分层：Profile / Bundle / Patch</h3>
+    <p>像叠千层饼一样组装系统，上层永远可以覆盖下层，还支持热重载</p>
+  </a>
+  <a class="article-card" href="deepseek-harness/04-capability-seam.html">
+    <span class="num">04</span>
+    <h3>能力接缝（Capability Seam）</h3>
+    <p>Definition / Provider / Consumer 三角色——换一个零件，改的是整个产品</p>
+  </a>
+  <a class="article-card" href="deepseek-harness/05-events-and-turn-flow.html">
+    <span class="num">05</span>
+    <h3>事件三域与 Turn 执行流</h3>
+    <p>session / agent / capability 三个域，一次任务从 turn/start 到 turn/end 的完整流水线</p>
+  </a>
+  <a class="article-card" href="deepseek-harness/06-session-log.html">
+    <span class="num">06</span>
+    <h3>Session Log：唯一事实源</h3>
+    <p>"Model-visible means logged"——模型看见的一切，都必须有据可查</p>
+  </a>
+  <a class="article-card" href="deepseek-harness/07-hands-on.html">
+    <span class="num">07</span>
+    <h3>动手实践：10 分钟跑起来</h3>
+    <p>npx 一把梭，配 Key、选工作区、发任务，再加三个值得马上试的命令</p>
+  </a>
+</div>
+</div>
+
+<footer class="site-footer">DeepSeek Harness 学习系列 · 内容基于 <a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">deepseek-ai/deepseek-harness</a>（MIT License），仅供学习交流</footer>
+</body>
+</html>

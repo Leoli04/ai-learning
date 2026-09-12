@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01 · 什么是 Agent Harness？— DeepSeek Harness 学习笔记</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> DeepSeek Harness</a>
+  <nav><a href="../index.html">目录</a><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">GitHub ↗</a></nav>
+</div></header>
+
+<div class="container">
+<article class="article">
+  <div class="kicker">DeepSeek Harness 学习系列 · 01</div>
+  <h1>什么是 Agent Harness？——给大模型装上"底盘和方向盘"</h1>
+  <div class="meta">约 5 分钟 · 关键词：Agent、Harness、dsh、DeepSeek</div>
+
+  <h2>先说结论</h2>
+  <p><strong>大模型（LLM）只会"说话"，不会"做事"。</strong>它没法自己打开文件、跑命令、记住上一步干了什么。要让它真正像一个"智能体（Agent）"一样干活，外面必须套一层"工作服"——这层工作服就叫 <strong>Harness</strong>（马具/挽具，寓意"套上缰绳才能驾驭"）。</p>
+  <blockquote>DeepSeek Harness（命令叫 <code>dsh</code>）就是 DeepSeek 官方开源的一个 Agent Harness，口号非常直白：<strong>Everything is a Plugin（一切皆插件）</strong>。</blockquote>
+
+  <h2>一个通俗的类比：发动机 vs 整车</h2>
+  <p>把 LLM 想成一台<strong>发动机</strong>：动力很强，但你不能开着发动机上路。你需要：</p>
+  <ul>
+    <li><strong>底盘和方向盘</strong>——决定动力往哪使（工具调用、任务规划）</li>
+    <li><strong>仪表盘</strong>——让你知道它干到哪一步了（会话记录、状态展示）</li>
+    <li><strong>安全带和刹车</strong>——防止它乱来（权限审批、沙箱隔离）</li>
+  </ul>
+  <p>Harness 就是把这些东西全部装好，交付给你一辆"能开的车"。</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- 用户 -->
+      <rect x="20" y="110" width="130" height="70" rx="12" fill="#161b22" stroke="#30363d"/>
+      <text x="85" y="140" text-anchor="middle" class="svg-text" font-size="16">你（用户）</text>
+      <text x="85" y="162" text-anchor="middle" class="svg-dim" font-size="12">提需求、做审批</text>
+      <line x1="150" y1="145" x2="210" y2="145" stroke="#5b8cff" stroke-width="2"/>
+      <polygon points="210,145 200,140 200,150" fill="#5b8cff"/>
+      <!-- Harness 大框 -->
+      <rect x="215" y="40" width="290" height="220" rx="14" fill="rgba(91,140,255,0.08)" stroke="#5b8cff" stroke-width="2"/>
+      <text x="360" y="68" text-anchor="middle" class="svg-text" font-size="17" font-weight="bold">Harness（dsh）</text>
+      <rect x="235" y="85" width="250" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="360" y="108" text-anchor="middle" class="svg-text" font-size="13">会话管理 · 记住每一步</text>
+      <rect x="235" y="130" width="250" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="360" y="153" text-anchor="middle" class="svg-text" font-size="13">工具调用 · 读文件/跑命令</text>
+      <rect x="235" y="175" width="250" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
+      <text x="360" y="198" text-anchor="middle" class="svg-text" font-size="13">权限审批 · 沙箱隔离</text>
+      <text x="360" y="240" text-anchor="middle" class="svg-dim" font-size="12">Agent 循环：想 → 做工具调用 → 看 → 再想</text>
+      <line x1="505" y1="145" x2="565" y2="145" stroke="#5b8cff" stroke-width="2"/>
+      <polygon points="565,145 555,140 555,150" fill="#5b8cff"/>
+      <!-- LLM -->
+      <rect x="570" y="110" width="130" height="70" rx="12" fill="#161b22" stroke="#bc8cff"/>
+      <text x="635" y="140" text-anchor="middle" class="svg-text" font-size="16">LLM</text>
+      <text x="635" y="162" text-anchor="middle" class="svg-dim" font-size="12">"大脑"：只负责推理</text>
+      <!-- 底部工具 -->
+      <rect x="235" y="270" width="70" height="24" rx="6" fill="#161b22" stroke="#3fb950"/>
+      <text x="270" y="286" text-anchor="middle" class="svg-text" font-size="11">文件系统</text>
+      <rect x="315" y="270" width="70" height="24" rx="6" fill="#161b22" stroke="#3fb950"/>
+      <text x="350" y="286" text-anchor="middle" class="svg-text" font-size="11">终端</text>
+      <rect x="395" y="270" width="70" height="24" rx="6" fill="#161b22" stroke="#3fb950"/>
+      <text x="430" y="286" text-anchor="middle" class="svg-text" font-size="11">浏览器</text>
+    </svg>
+    <figcaption>图 1：LLM 是发动机，Harness 是整台车——负责干活、管状态、保安全</figcaption>
+  </figure>
+
+  <h2>dsh 能以什么形态跑？</h2>
+  <p>同一个内核，dsh 提供了几种"套餐"（官方叫 Profile）：</p>
+  <table>
+    <tr><th>形态</th><th>一句话说明</th></tr>
+    <tr><td><code>dsh web</code></td><td>启动本地 Web 界面（默认 <code>http://127.0.0.1:3080</code>），最常用的上手方式</td></tr>
+    <tr><td><code>headless</code></td><td>无界面，一次性跑完任务就退出，适合脚本/自动化</td></tr>
+    <tr><td><code>sdk</code> / <code>sdk-minimal</code></td><td>把 Agent 能力嵌到你自己的程序里（有 Python SDK）</td></tr>
+    <tr><td><code>acp</code></td><td>纯自动化协议服务，给别的软件当"后端大脑"</td></tr>
+  </table>
+
+  <div class="tip"><b>✅ 记住这张图就够：</b>用户提需求 → Harness 安排 LLM 推理 → 调用工具干活 → 结果记进会话 → 循环直到完成。所有工程难题（记忆、安全、工具）都在 Harness 这一层解决。</div>
+
+  <h2>那"一切皆插件"是什么意思？</h2>
+  <p>这是 dsh 最有意思的设计——下一篇文章专门讲。</p>
+</article>
+
+<div class="pager">
+  <a class="prev" href="../index.html"><span class="dir">← 返回</span>系列目录</a>
+  <a class="next" href="02-everything-is-a-plugin.html"><span class="dir">下一篇 →</span>一切皆插件：没有特权核心</a>
+</div>
+</div>
+
+<footer class="site-footer">DeepSeek Harness 学习系列 · 内容基于 <a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">deepseek-ai/deepseek-harness</a>（MIT License），仅供学习交流</footer>
+</body>
+</html>
