@@ -1,0 +1,7 @@
+node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+_v.txt
+_convert.py
+_r*.txt
+_check.txt

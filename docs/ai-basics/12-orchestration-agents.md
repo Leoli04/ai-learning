@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 · 编排与主流 Agent 技术全景 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: 工作流编排与主流 Agent 技术全景
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 12</div>
-  <h1>工作流编排与主流 Agent 技术全景</h1>
-  <div class="meta">约 9 分钟 · 关键词：n8n / Dify、LangGraph、编码 Agent、技术栈分层</div>
+# 工作流编排与主流 Agent 技术全景
 
-  <h2>编排：确定性流水线 + AI 节点</h2>
-  <p>Agent 擅长开放性任务，但企业里大量需求是<strong>固定流程</strong>：每天汇总舆情 → AI 分类打标 → 推送企微群。这类事要的是稳定、可审计、可重跑——工作流编排工具的领地：</p>
+> 约 9 分钟 · 关键词：n8n / Dify、LangGraph、编码 Agent、技术栈分层
+
+## 编排：确定性流水线 + AI 节点
+
+Agent 擅长开放性任务，但企业里大量需求是**固定流程**：每天汇总舆情 → AI 分类打标 → 推送企微群。这类事要的是稳定、可审计、可重跑——工作流编排工具的领地：
+
   <table>
     <tr><th>工具</th><th>定位</th></tr>
     <tr><td><strong>n8n</strong></td><td>开源可自部署，几百个节点生态，AI 只是画布上的节点之一</td></tr>
@@ -27,9 +17,11 @@
     <tr><td><strong>Coze / 扣子</strong></td><td>字节系低代码 Bot 平台，上手最快</td></tr>
     <tr><td><strong>LangGraph</strong></td><td>代码级编排：把 Agent 流程画成状态图，节点可循环可回退</td></tr>
   </table>
-  <p>选型准则一句话：<strong>能画清楚流程的用编排，画不清楚的才交给自主 Agent</strong>。两者正在融合——n8n 里可以嵌 AI Agent 节点，Agent 框架里也能调用固定工作流。</p>
 
-  <h2>主流 Agent 产品与技术盘点（2025–2026）</h2>
+选型准则一句话：**能画清楚流程的用编排，画不清楚的才交给自主 Agent**。两者正在融合——n8n 里可以嵌 AI Agent 节点，Agent 框架里也能调用固定工作流。
+
+## 主流 Agent 产品与技术盘点（2025–2026）
+
   <table>
     <tr><th>阵营</th><th>代表</th><th>关键技术组合</th></tr>
     <tr><td><strong>编码 Agent</strong></td><td>Claude Code、Cursor、GitHub Copilot、OpenAI Codex、Devin</td><td>Agent 循环 + 文件/终端/搜索工具 + 沙箱隔离 + 计划与子智能体 + Skill 沉淀项目规范</td></tr>
@@ -39,7 +31,8 @@
     <tr><td><strong>低代码平台</strong></td><td>Dify、Coze、n8n</td><td>节点画布 + RAG 内置 + 触发器生态</td></tr>
   </table>
 
-  <h2>共性技术栈：所有 Agent 都长这样</h2>
+## 共性技术栈：所有 Agent 都长这样
+
   <figure class="figure">
     <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
@@ -72,17 +65,8 @@
     <figcaption>图 12：Agent 技术栈六层 + 贯穿式安全层——换任何一层的产品，结构都类似</figcaption>
   </figure>
 
-  <div class="tip"><b>✅ 一句话记忆：</b>把任意一个主流 Agent 拆开，都是这六层的不同实现组合。<strong>差异通常不在"有没有"，而在"哪一层做得好"</strong>——编码 Agent 强在工具与沙箱，低代码平台强在编排与生态，开源 Harness 强在可定制与透明。</div>
+  ::: tip
+把任意一个主流 Agent 拆开，都是这六层的不同实现组合。**差异通常不在"有没有"，而在"哪一层做得好"**——编码 Agent 强在工具与沙箱，低代码平台强在编排与生态，开源 Harness 强在可定制与透明。
+:::
 
-  <p>全景看完，最后回头冷静盘一盘：<strong>哪些问题至今没解决</strong>？</p>
-</article>
-
-<div class="pager">
-  <a class="prev" href="11-multimodal-reasoning.html"><span class="dir">← 上一篇</span>多模态与推理模型</a>
-  <a class="next" href="13-open-problems.html"><span class="dir">下一篇 →</span>当前还没解决的问题</a>
-</div>
-</div>
-
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+全景看完，最后回头冷静盘一盘：**哪些问题至今没解决**？

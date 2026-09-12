@@ -1,35 +1,26 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>01 · 什么是 Agent Harness？— DeepSeek Harness 学习笔记</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> DeepSeek Harness</a>
-  <nav><a href="../index.html">目录</a><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">GitHub ↗</a></nav>
-</div></header>
+---
+title: 什么是 Agent Harness？——给大模型装上"底盘和方向盘"
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">DeepSeek Harness 学习系列 · 01</div>
-  <h1>什么是 Agent Harness？——给大模型装上"底盘和方向盘"</h1>
-  <div class="meta">约 5 分钟 · 关键词：Agent、Harness、dsh、DeepSeek</div>
+# 什么是 Agent Harness？——给大模型装上"底盘和方向盘"
 
-  <h2>先说结论</h2>
-  <p><strong>大模型（LLM）只会"说话"，不会"做事"。</strong>它没法自己打开文件、跑命令、记住上一步干了什么。要让它真正像一个"智能体（Agent）"一样干活，外面必须套一层"工作服"——这层工作服就叫 <strong>Harness</strong>（马具/挽具，寓意"套上缰绳才能驾驭"）。</p>
-  <blockquote>DeepSeek Harness（命令叫 <code>dsh</code>）就是 DeepSeek 官方开源的一个 Agent Harness，口号非常直白：<strong>Everything is a Plugin（一切皆插件）</strong>。</blockquote>
+> 约 5 分钟 · 关键词：Agent、Harness、dsh、DeepSeek
 
-  <h2>一个通俗的类比：发动机 vs 整车</h2>
-  <p>把 LLM 想成一台<strong>发动机</strong>：动力很强，但你不能开着发动机上路。你需要：</p>
-  <ul>
-    <li><strong>底盘和方向盘</strong>——决定动力往哪使（工具调用、任务规划）</li>
-    <li><strong>仪表盘</strong>——让你知道它干到哪一步了（会话记录、状态展示）</li>
-    <li><strong>安全带和刹车</strong>——防止它乱来（权限审批、沙箱隔离）</li>
-  </ul>
-  <p>Harness 就是把这些东西全部装好，交付给你一辆"能开的车"。</p>
+## 先说结论
+
+**大模型（LLM）只会"说话"，不会"做事"。**它没法自己打开文件、跑命令、记住上一步干了什么。要让它真正像一个"智能体（Agent）"一样干活，外面必须套一层"工作服"——这层工作服就叫 **Harness**（马具/挽具，寓意"套上缰绳才能驾驭"）。
+
+  > DeepSeek Harness（命令叫 `dsh`）就是 DeepSeek 官方开源的一个 Agent Harness，口号非常直白：**Everything is a Plugin（一切皆插件）**。
+
+## 一个通俗的类比：发动机 vs 整车
+
+把 LLM 想成一台**发动机**：动力很强，但你不能开着发动机上路。你需要：
+
+  - **底盘和方向盘**——决定动力往哪使（工具调用、任务规划）
+- **仪表盘**——让你知道它干到哪一步了（会话记录、状态展示）
+- **安全带和刹车**——防止它乱来（权限审批、沙箱隔离）
+
+Harness 就是把这些东西全部装好，交付给你一辆"能开的车"。
 
   <figure class="figure">
     <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
@@ -66,8 +57,10 @@
     <figcaption>图 1：LLM 是发动机，Harness 是整台车——负责干活、管状态、保安全</figcaption>
   </figure>
 
-  <h2>dsh 能以什么形态跑？</h2>
-  <p>同一个内核，dsh 提供了几种"套餐"（官方叫 Profile）：</p>
+## dsh 能以什么形态跑？
+
+同一个内核，dsh 提供了几种"套餐"（官方叫 Profile）：
+
   <table>
     <tr><th>形态</th><th>一句话说明</th></tr>
     <tr><td><code>dsh web</code></td><td>启动本地 Web 界面（默认 <code>http://127.0.0.1:3080</code>），最常用的上手方式</td></tr>
@@ -76,18 +69,10 @@
     <tr><td><code>acp</code></td><td>纯自动化协议服务，给别的软件当"后端大脑"</td></tr>
   </table>
 
-  <div class="tip"><b>✅ 记住这张图就够：</b>用户提需求 → Harness 安排 LLM 推理 → 调用工具干活 → 结果记进会话 → 循环直到完成。所有工程难题（记忆、安全、工具）都在 Harness 这一层解决。</div>
+  ::: tip
+用户提需求 → Harness 安排 LLM 推理 → 调用工具干活 → 结果记进会话 → 循环直到完成。所有工程难题（记忆、安全、工具）都在 Harness 这一层解决。
+:::
 
-  <h2>那"一切皆插件"是什么意思？</h2>
-  <p>这是 dsh 最有意思的设计——下一篇文章专门讲。</p>
-</article>
+## 那"一切皆插件"是什么意思？
 
-<div class="pager">
-  <a class="prev" href="../index.html"><span class="dir">← 返回</span>系列目录</a>
-  <a class="next" href="02-everything-is-a-plugin.html"><span class="dir">下一篇 →</span>一切皆插件：没有特权核心</a>
-</div>
-</div>
-
-<footer class="site-footer">DeepSeek Harness 学习系列 · 内容基于 <a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">deepseek-ai/deepseek-harness</a>（MIT License），仅供学习交流</footer>
-</body>
-</html>
+这是 dsh 最有意思的设计——下一篇文章专门讲。

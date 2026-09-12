@@ -1,0 +1,89 @@
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  lang: 'zh-CN',
+  title: 'AI 学习笔记',
+  description: 'AI 基础与 Agent 技术通俗图解系列：从 Transformer 到 Agent 时代',
+  base: '/ai-learning/',
+  ignoreDeadLinks: true,
+  themeConfig: {
+    siteTitle: 'AI 学习笔记',
+    darkModeSwitchLabel: '外观',
+    sidebarMenuLabel: '目录',
+    returnToTopLabel: '回到顶部',
+    outline: { level: [2, 3], label: '本页目录' },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Leoli04/ai-learning' }
+    ],
+    nav: [
+      { text: 'AI 基础', link: '/ai-basics/01-llm-era' },
+      { text: 'DeepSeek Harness', link: '/deepseek-harness/01-what-is-agent-harness' }
+    ],
+    sidebar: {
+      '/ai-basics/': [
+        {
+          text: '模块一 · 模型层',
+          collapsed: false,
+          items: [
+            { text: '01 · 大模型这几年', link: '/ai-basics/01-llm-era' },
+            { text: '02 · Transformer 与训练三部曲', link: '/ai-basics/02-transformer-training' },
+            { text: '03 · Prompt 工程与上下文学习', link: '/ai-basics/03-prompt' }
+          ]
+        },
+        {
+          text: '模块二 · 知识与检索',
+          collapsed: false,
+          items: [
+            { text: '04 · RAG：外挂一个大脑', link: '/ai-basics/04-rag' },
+            { text: '05 · 向量数据库与检索栈', link: '/ai-basics/05-vector-db' }
+          ]
+        },
+        {
+          text: '模块三 · Agent 技术',
+          collapsed: false,
+          items: [
+            { text: '06 · Agent 核心范式', link: '/ai-basics/06-agent-paradigms' },
+            { text: '07 · 记忆与上下文工程', link: '/ai-basics/07-memory-context' },
+            { text: '08 · Skill 与 MCP', link: '/ai-basics/08-skill-mcp' }
+          ]
+        },
+        {
+          text: '模块四 · 模型工程',
+          collapsed: false,
+          items: [
+            { text: '09 · 微调与对齐', link: '/ai-basics/09-finetuning' },
+            { text: '10 · 推理优化与部署', link: '/ai-basics/10-inference-optimization' },
+            { text: '11 · 多模态与推理模型', link: '/ai-basics/11-multimodal-reasoning' }
+          ]
+        },
+        {
+          text: '模块五 · 系统与全局',
+          collapsed: false,
+          items: [
+            { text: '12 · 编排与主流 Agent 全景', link: '/ai-basics/12-orchestration-agents' },
+            { text: '13 · 当前还没解决的问题', link: '/ai-basics/13-open-problems' }
+          ]
+        }
+      ],
+      '/deepseek-harness/': [
+        {
+          text: 'DeepSeek Harness 系列',
+          collapsed: false,
+          items: [
+            { text: '01 · 什么是 Agent Harness', link: '/deepseek-harness/01-what-is-agent-harness' },
+            { text: '02 · 一切皆插件', link: '/deepseek-harness/02-everything-is-a-plugin' },
+            { text: '03 · 启动分层：Profile/Bundle/Patch', link: '/deepseek-harness/03-profile-bundle-patch' },
+            { text: '04 · 能力接缝（Capability Seam）', link: '/deepseek-harness/04-capability-seam' },
+            { text: '05 · 事件三域与 Turn 执行流', link: '/deepseek-harness/05-events-and-turn-flow' },
+            { text: '06 · Session Log：唯一事实源', link: '/deepseek-harness/06-session-log' },
+            { text: '07 · 动手实践：10 分钟跑起来', link: '/deepseek-harness/07-hands-on' }
+          ]
+        }
+      ]
+    },
+    footer: {
+      message: 'AI 学习笔记 · 通俗图解系列，仅供学习交流',
+      copyright: 'Copyright © 2026 Leoli04'
+    }
+  }
+})

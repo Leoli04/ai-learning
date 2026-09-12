@@ -1,31 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>03 · Prompt 工程与上下文学习 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: Prompt 工程与上下文学习：不训练，也能"教"模型
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 03</div>
-  <h1>Prompt 工程与上下文学习：不训练，也能"教"模型</h1>
-  <div class="meta">约 6 分钟 · 关键词：Zero/Few-shot、CoT、上下文学习</div>
+# Prompt 工程与上下文学习：不训练，也能"教"模型
 
-  <h2>最省钱的能力获取方式</h2>
-  <p>想让模型干一件新的事，通常有三条路，成本天差地别：</p>
-  <ol>
-    <li><strong>重新训练</strong>：几百万到几亿，只有大厂玩得起；</li>
-    <li><strong>微调（Fine-tuning）</strong>：几千到几万，改模型的"参数"；</li>
-    <li><strong>Prompt（提示词）</strong>：几乎免费——不改参数，只在<strong>输入上下文里做文章</strong>。</li>
-  </ol>
-  <p>第三条路有效的原因是 GPT-3 论文命名的现象：<strong>上下文学习（In-Context Learning, ICL）</strong>——模型在提示里看到几个例子，就能"现学现卖"，即使参数一个都没改。</p>
+> 约 6 分钟 · 关键词：Zero/Few-shot、CoT、上下文学习
+
+## 最省钱的能力获取方式
+
+想让模型干一件新的事，通常有三条路，成本天差地别：
+
+  1. **重新训练**：几百万到几亿，只有大厂玩得起；
+2. **微调（Fine-tuning）**：几千到几万，改模型的"参数"；
+3. **Prompt（提示词）**：几乎免费——不改参数，只在**输入上下文里做文章**。
+
+第三条路有效的原因是 GPT-3 论文命名的现象：**上下文学习（In-Context Learning, ICL）**——模型在提示里看到几个例子，就能"现学现卖"，即使参数一个都没改。
 
   <figure class="figure">
     <svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg">
@@ -61,23 +50,13 @@
     <figcaption>图 2：上下文 = 指令 + 示例 + 资料 + 问题；三种经典写法由弱到强</figcaption>
   </figure>
 
-  <h2>几条最划算的 Prompt 实践</h2>
-  <ul>
-    <li><strong>给角色</strong>："你是一名资深 Java 后端工程师"——比直接提问效果好；</li>
-    <li><strong>给例子</strong>：格式类任务（抽取、分类、转 JSON）放 2~3 个示例，比千言万语都管用；</li>
-    <li><strong>给步骤</strong>：复杂推理要求"先列出步骤，再给答案"（思维链）；</li>
-    <li><strong>给约束</strong>：明确"不确定就说不知道，不要编造"——虽然不能根除幻觉，但能显著减少。</li>
-  </ul>
+## 几条最划算的 Prompt 实践
 
-  <div class="warn"><b>⚠️ Prompt 的天花板：</b>上下文窗口装不下整个公司文档库，模型也记不住两次会话之间的约定。而且不管 Prompt 写得多好，<strong>模型仍可能一本正经地编造</strong>。这两个问题分别催生了下一篇的 <strong>RAG</strong> 和后面要讲的<strong>记忆机制</strong>。</div>
-</article>
+  - **给角色**："你是一名资深 Java 后端工程师"——比直接提问效果好；
+- **给例子**：格式类任务（抽取、分类、转 JSON）放 2~3 个示例，比千言万语都管用；
+- **给步骤**：复杂推理要求"先列出步骤，再给答案"（思维链）；
+- **给约束**：明确"不确定就说不知道，不要编造"——虽然不能根除幻觉，但能显著减少。
 
-<div class="pager">
-  <a class="prev" href="02-transformer-training.html"><span class="dir">← 上一篇</span>Transformer 与训练三部曲</a>
-  <a class="next" href="04-rag.html"><span class="dir">下一篇 →</span>RAG：给模型外挂一个大脑</a>
-</div>
-</div>
-
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+  ::: warning
+上下文窗口装不下整个公司文档库，模型也记不住两次会话之间的约定。而且不管 Prompt 写得多好，**模型仍可能一本正经地编造**。这两个问题分别催生了下一篇的 **RAG** 和后面要讲的**记忆机制**。
+:::

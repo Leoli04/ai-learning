@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>05 · 事件三域与 Turn 执行流 — DeepSeek Harness 学习笔记</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> DeepSeek Harness</a>
-  <nav><a href="../index.html">目录</a><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">GitHub ↗</a></nav>
-</div></header>
+---
+title: 事件三域与 Turn 执行流：一次任务是怎么跑完的
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">DeepSeek Harness 学习系列 · 05</div>
-  <h1>事件三域与 Turn 执行流：一次任务是怎么跑完的</h1>
-  <div class="meta">约 7 分钟 · 关键词：session / agent / capability 事件、Turn、Step、Waterfall</div>
+# 事件三域与 Turn 执行流：一次任务是怎么跑完的
 
-  <h2>事件是第一扩展点</h2>
-  <p>在 dsh 里，"改行为"的第一选择不是改代码，而是<strong>监听事件</strong>。但事件分三个"域"，选错域是新手最常见的坑：</p>
+> 约 7 分钟 · 关键词：session / agent / capability 事件、Turn、Step、Waterfall
+
+## 事件是第一扩展点
+
+在 dsh 里，"改行为"的第一选择不是改代码，而是**监听事件**。但事件分三个"域"，选错域是新手最常见的坑：
+
   <table>
     <tr><th>域</th><th>性质</th><th>什么时候用</th></tr>
     <tr><td><strong>Session 事件</strong></td><td>持久事实，追加进日志，重启后还在</td><td>需要跨重启存活的"事实"（消息、工具结果）</td></tr>
@@ -27,8 +17,9 @@
     <tr><td><strong>Capability 事件</strong>（<code>fs/*</code>、<code>tools/*</code> 等）</td><td>策略挂载点</td><td>给某条 Seam 附加策略或适配器，不必导入主循环</td></tr>
   </table>
 
-  <h2>Turn 和 Step：两个节拍器</h2>
-  <p>一次完整的用户请求叫一个 <strong>Turn（轮）</strong>。一个 Turn 里可能发生多轮"模型思考 + 工具调用"，每一小步叫一个 <strong>Step（步）</strong>。完整流水线如下：</p>
+## Turn 和 Step：两个节拍器
+
+一次完整的用户请求叫一个 **Turn（轮）**。一个 Turn 里可能发生多轮"模型思考 + 工具调用"，每一小步叫一个 **Step（步）**。完整流水线如下：
 
   <figure class="figure">
     <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
@@ -63,23 +54,18 @@
     <figcaption>图 5：一个 Turn 的完整流水线——Step 循环直到无需更多请求</figcaption>
   </figure>
 
-  <h2>两个容易忽略的细节</h2>
-  <h3>瀑布（Waterfall）事件要放行</h3>
-  <p><code>agent/pre-step</code>、<code>agent/request</code>、<code>llm/stream</code> 和三个 <code>tools/*</code> 事件是"瀑布式"的：<strong>监听者必须调用 <code>next()</code> 把水放下去</strong>，否则整条链路停在你这里。这既是拦截点（审批、审计），也是责任（忘了放行系统就卡死）。</p>
-  <h3>单收件箱</h3>
-  <p>所有输入都从一个<strong>单一 inbox</strong> 进入驱动：新消息立刻唤醒 Agent；而"注入的上下文"会安静地在 inbox 里排队，直到下一条真消息到来才一起被消化——避免上下文碎片反复打断模型。</p>
+## 两个容易忽略的细节
 
-  <div class="tip"><b>✅ 一句话记忆：</b>持久事实进 Session 域，实时状态走 Agent 域，策略附加用 Capability 域；Turn 由若干 Step 组成，瀑布事件记得 <code>next()</code>。</div>
+### 瀑布（Waterfall）事件要放行
 
-  <p>流水线里反复出现"追加进日志"——那个日志为什么如此重要？下一篇讲 dsh 的基石设计：<strong>Session Log，唯一事实源</strong>。</p>
-</article>
+`agent/pre-step`、`agent/request`、`llm/stream` 和三个 `tools/*` 事件是"瀑布式"的：**监听者必须调用 `next()` 把水放下去**，否则整条链路停在你这里。这既是拦截点（审批、审计），也是责任（忘了放行系统就卡死）。
 
-<div class="pager">
-  <a class="prev" href="04-capability-seam.html"><span class="dir">← 上一篇</span>能力接缝：三角色换件魔术</a>
-  <a class="next" href="06-session-log.html"><span class="dir">下一篇 →</span>Session Log：唯一事实源</a>
-</div>
-</div>
+### 单收件箱
 
-<footer class="site-footer">DeepSeek Harness 学习系列 · 内容基于 <a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank">deepseek-ai/deepseek-harness</a>（MIT License），仅供学习交流</footer>
-</body>
-</html>
+所有输入都从一个**单一 inbox** 进入驱动：新消息立刻唤醒 Agent；而"注入的上下文"会安静地在 inbox 里排队，直到下一条真消息到来才一起被消化——避免上下文碎片反复打断模型。
+
+  ::: tip
+持久事实进 Session 域，实时状态走 Agent 域，策略附加用 Capability 域；Turn 由若干 Step 组成，瀑布事件记得 `next()`。
+:::
+
+流水线里反复出现"追加进日志"——那个日志为什么如此重要？下一篇讲 dsh 的基石设计：**Session Log，唯一事实源**。

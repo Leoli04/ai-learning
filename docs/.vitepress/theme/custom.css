@@ -1,0 +1,25 @@
+/* ai-learning 品牌色定制：沿用原暗色主题的蓝 */
+:root {
+  --vp-c-brand-1: #5b8cff;
+  --vp-c-brand-2: #7aa2ff;
+  --vp-c-brand-3: #4a7bec;
+  --vp-c-brand-soft: rgba(91, 140, 255, 0.14);
+}
+
+/* 文章内 SVG 图解容器样式（继承原手绘图风格） */
+.vp-doc .figure {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 18px 14px 8px;
+  margin: 26px 0;
+}
+.vp-doc .figure svg { display: block; width: 100%; height: auto; }
+.vp-doc .figure figcaption {
+  text-align: center;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  padding: 8px 0 6px;
+}
+
+/* 暗色模式下 SVG 文字颜色跟随（原 HTML 用固定 class 着色，已内联填充，无需处理） */

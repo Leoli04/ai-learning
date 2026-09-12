@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>05 · 向量数据库与检索技术栈 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: 向量数据库与检索栈：RAG 的发动机舱
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 05</div>
-  <h1>向量数据库与检索栈：RAG 的发动机舱</h1>
-  <div class="meta">约 8 分钟 · 关键词：Embedding 模型、Chunking、ANN 索引、混合检索、Rerank</div>
+# 向量数据库与检索栈：RAG 的发动机舱
 
-  <h2>上一篇说 RAG"先查后答"，这一篇拆"查"这个动作</h2>
-  <p>RAG 的效果好坏，八成取决于检索质量。一条完整的检索流水线如下，每个环节都有成熟技术：</p>
+> 约 8 分钟 · 关键词：Embedding 模型、Chunking、ANN 索引、混合检索、Rerank
+
+## 上一篇说 RAG"先查后答"，这一篇拆"查"这个动作
+
+RAG 的效果好坏，八成取决于检索质量。一条完整的检索流水线如下，每个环节都有成熟技术：
 
   <figure class="figure">
     <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
@@ -75,12 +64,18 @@
     <figcaption>图 5：检索流水线——切分 → 向量化 → 建索引 → ANN 召回 → 重排 → 交付</figcaption>
   </figure>
 
-  <h2>四个关键技术点</h2>
-  <h3>1. ANN 索引：用"近似"换"速度"</h3>
-  <p>百万级向量里逐一算距离（暴力搜索）太慢。<strong>ANN（近似最近邻）</strong>算法把向量组织成可快速导航的结构——最常用 <strong>HNSW</strong>（分层小世界图，像先走高速再走小路）和 <strong>IVF</strong>（先聚类分区，只在最近几个区里找）。牺牲一点点召回率，换来毫秒级响应。</p>
-  <h3>2. 切分是效果的第一分水岭</h3>
-  <p>主流策略：<strong>递归切分</strong>（先按段落、再按句子，带 10%~20% 重叠窗口防截断）、<strong>按语义边界</strong>（Embedding 相似度变化处下刀）、结构化文档按标题/表格整块切。切错了，后面全白搭。</p>
-  <h3>3. 选型一览</h3>
+## 四个关键技术点
+
+### 1. ANN 索引：用"近似"换"速度"
+
+百万级向量里逐一算距离（暴力搜索）太慢。**ANN（近似最近邻）**算法把向量组织成可快速导航的结构——最常用 **HNSW**（分层小世界图，像先走高速再走小路）和 **IVF**（先聚类分区，只在最近几个区里找）。牺牲一点点召回率，换来毫秒级响应。
+
+### 2. 切分是效果的第一分水岭
+
+主流策略：**递归切分**（先按段落、再按句子，带 10%~20% 重叠窗口防截断）、**按语义边界**（Embedding 相似度变化处下刀）、结构化文档按标题/表格整块切。切错了，后面全白搭。
+
+### 3. 选型一览
+
   <table>
     <tr><th>产品</th><th>定位</th></tr>
     <tr><td><strong>FAISS</strong></td><td>Meta 的向量检索库（非数据库），原型验证首选</td></tr>
@@ -88,23 +83,14 @@
     <tr><td><strong>pgvector</strong></td><td>PostgreSQL 插件——已有 PG 就别引入新组件</td></tr>
     <tr><td><strong>Milvus / Qdrant / Weaviate</strong></td><td>生产级专用向量库：分布式、标量过滤、混合检索齐全</td></tr>
   </table>
-  <h3>4. 进阶方向</h3>
-  <ul>
-    <li><strong>Agentic RAG</strong>：让 Agent 决定"查不查、查什么、查几轮"，检索本身成为工具调用；</li>
-    <li><strong>GraphRAG</strong>：抽取实体关系建知识图谱，回答"跨文档、多跳"问题（如"A 公司的供应商的母公司是谁"）。</li>
-  </ul>
 
-  <div class="tip"><b>✅ 一句话记忆：</b>检索栈五件套——<strong>切分定上限、Embedding 定语义、ANN 定速度、混合检索补短板、Rerank 定精度</strong>。RAG 效果不好时，按这个顺序逐层排查。</div>
+### 4. 进阶方向
 
-  <p>知识问题解决完，接下来是让模型"动手"——下一篇：<strong>Agent 核心范式</strong>。</p>
-</article>
+  - **Agentic RAG**：让 Agent 决定"查不查、查什么、查几轮"，检索本身成为工具调用；
+- **GraphRAG**：抽取实体关系建知识图谱，回答"跨文档、多跳"问题（如"A 公司的供应商的母公司是谁"）。
 
-<div class="pager">
-  <a class="prev" href="04-rag.html"><span class="dir">← 上一篇</span>RAG：外挂知识库</a>
-  <a class="next" href="06-agent-paradigms.html"><span class="dir">下一篇 →</span>Agent 核心范式：ReAct 与多智能体</a>
-</div>
-</div>
+  ::: tip
+检索栈五件套——**切分定上限、Embedding 定语义、ANN 定速度、混合检索补短板、Rerank 定精度**。RAG 效果不好时，按这个顺序逐层排查。
+:::
 
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+知识问题解决完，接下来是让模型"动手"——下一篇：**Agent 核心范式**。

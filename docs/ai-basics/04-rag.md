@@ -1,31 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>04 · RAG：给模型外挂一个大脑 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: RAG：开卷考试——给模型外挂一个知识库
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 04</div>
-  <h1>RAG：开卷考试——给模型外挂一个知识库</h1>
-  <div class="meta">约 7 分钟 · 关键词：RAG、向量检索、Embedding、幻觉治理</div>
+# RAG：开卷考试——给模型外挂一个知识库
 
-  <h2>RAG 解决什么问题？</h2>
-  <p>模型的三个天生缺陷：</p>
-  <ul>
-    <li><strong>知识过期</strong>：训练数据有截止日期，问"昨天的新闻"它只能瞎猜；</li>
-    <li><strong>没有私有数据</strong>：它没读过你公司的产品手册和数据库；</li>
-    <li><strong>幻觉</strong>：不知道的事，它会"编"一个听起来很像回事的答案。</li>
-  </ul>
-  <p><strong>RAG（Retrieval-Augmented Generation，检索增强生成）</strong>的思路朴素而有效：<strong>别让模型背书，让它开卷考试</strong>——先从你的知识库里查到相关资料，把资料塞进提示词，再让模型基于资料作答。</p>
+> 约 7 分钟 · 关键词：RAG、向量检索、Embedding、幻觉治理
+
+## RAG 解决什么问题？
+
+模型的三个天生缺陷：
+
+  - **知识过期**：训练数据有截止日期，问"昨天的新闻"它只能瞎猜；
+- **没有私有数据**：它没读过你公司的产品手册和数据库；
+- **幻觉**：不知道的事，它会"编"一个听起来很像回事的答案。
+
+**RAG（Retrieval-Augmented Generation，检索增强生成）**的思路朴素而有效：**别让模型背书，让它开卷考试**——先从你的知识库里查到相关资料，把资料塞进提示词，再让模型基于资料作答。
 
   <figure class="figure">
     <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
@@ -74,23 +63,18 @@
     <figcaption>图 3：RAG 两阶段——离线建库 + 在线"检索→塞进提示词→作答"</figcaption>
   </figure>
 
-  <h2>两个关键词</h2>
-  <h3>Embedding（向量化）</h3>
-  <p>把一段文字变成一串数字（如 1024 维向量），<strong>意思相近的文字，向量距离就近</strong>。于是"找相关资料"就变成数学题：算向量夹角，取最近的几段。这就是<strong>语义检索</strong>——搜"报销"，能找到写着"差旅费管理办法"的文档，不需要关键词完全命中。</p>
-  <h3>切分（Chunking）</h3>
-  <p>文档要先切成合适大小的段落再入库。切太大：检索不准、占上下文；切太小：丢失上下文。这是 RAG 效果好坏的第一个分水岭。</p>
+## 两个关键词
 
-  <div class="tip"><b>✅ 记忆口诀：</b>RAG = <strong>先查后答</strong>。它把"模型不知道"转化为"检索没检索到"——一个可以用工程手段持续优化的确定性问题。这也正是它成为企业落地 AI 第一站的原因：私有数据不出内网，答案可溯源。</div>
+### Embedding（向量化）
 
-  <p>RAG 解决"知道什么"，但"能做什么"还差一步——下一篇：<strong>Agent 与工具调用</strong>。</p>
-</article>
+把一段文字变成一串数字（如 1024 维向量），**意思相近的文字，向量距离就近**。于是"找相关资料"就变成数学题：算向量夹角，取最近的几段。这就是**语义检索**——搜"报销"，能找到写着"差旅费管理办法"的文档，不需要关键词完全命中。
 
-<div class="pager">
-  <a class="prev" href="03-prompt.html"><span class="dir">← 上一篇</span>Prompt 工程与上下文学习</a>
-  <a class="next" href="05-vector-db.html"><span class="dir">下一篇 →</span>向量数据库与检索栈</a>
-</div>
-</div>
+### 切分（Chunking）
 
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+文档要先切成合适大小的段落再入库。切太大：检索不准、占上下文；切太小：丢失上下文。这是 RAG 效果好坏的第一个分水岭。
+
+  ::: tip
+RAG = **先查后答**。它把"模型不知道"转化为"检索没检索到"——一个可以用工程手段持续优化的确定性问题。这也正是它成为企业落地 AI 第一站的原因：私有数据不出内网，答案可溯源。
+:::
+
+RAG 解决"知道什么"，但"能做什么"还差一步——下一篇：**Agent 与工具调用**。

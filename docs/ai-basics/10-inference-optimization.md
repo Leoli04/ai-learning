@@ -1,30 +1,19 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10 · 推理优化与部署 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: 推理优化与部署：让模型跑得快、装得下、花得少
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 10</div>
-  <h1>推理优化与部署：让模型跑得快、装得下、花得少</h1>
-  <div class="meta">约 8 分钟 · 关键词：KV Cache、量化、vLLM / PagedAttention、投机解码、Ollama</div>
+# 推理优化与部署：让模型跑得快、装得下、花得少
 
-  <h2>为什么推理贵？先看瓶颈在哪</h2>
-  <p>生成是逐 token 接龙：每生成一个字，都要把整段上下文过一遍模型。两个直接后果——</p>
-  <ul>
-    <li><strong>算力瓶颈</strong>：上下文越长，每个 token 的计算量越大；</li>
-    <li><strong>显存瓶颈</strong>：模型权重 + 中间结果都要装进显存。70B 模型 FP16 精度要约 140GB 显存，单卡根本放不下。</li>
-  </ul>
-  <p>工程界对症下药，形成了一套标准优化组合拳：</p>
+> 约 8 分钟 · 关键词：KV Cache、量化、vLLM / PagedAttention、投机解码、Ollama
+
+## 为什么推理贵？先看瓶颈在哪
+
+生成是逐 token 接龙：每生成一个字，都要把整段上下文过一遍模型。两个直接后果——
+
+  - **算力瓶颈**：上下文越长，每个 token 的计算量越大；
+- **显存瓶颈**：模型权重 + 中间结果都要装进显存。70B 模型 FP16 精度要约 140GB 显存，单卡根本放不下。
+
+工程界对症下药，形成了一套标准优化组合拳：
 
   <figure class="figure">
     <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
@@ -54,33 +43,25 @@
     <figcaption>图 10：推理优化四件套——KV Cache、量化、投机解码、vLLM 服务化</figcaption>
   </figure>
 
-  <h2>部署形态怎么选？</h2>
+## 部署形态怎么选？
+
   <table>
     <tr><th>形态</th><th>适合</th><th>代表</th></tr>
     <tr><td><strong>云端 API</strong></td><td>多数业务：零运维、按量付费</td><td>DeepSeek / OpenAI / 各云厂商</td></tr>
     <tr><td><strong>自托管推理服务</strong></td><td>数据不出内网、量大摊薄成本</td><td>vLLM、SGLang、TGI + 开源权重</td></tr>
     <tr><td><strong>本机 / 边缘</strong></td><td>个人、离线、隐私极端敏感</td><td>Ollama、llama.cpp（量化小模型）</td></tr>
   </table>
-  <p>经验值：7B 模型 4bit 量化后约 4~5GB，一台笔记本就能跑；70B 级别 4bit 也要 40GB+，需要多卡或专用推理机。</p>
 
-  <h2>省钱的另一个杠杆：模型分层路由</h2>
-  <ul>
-    <li><strong>简单步骤用小模型</strong>：分类、抽取、格式转换交给 7B 级别，只有复杂推理才请出大模型；</li>
-    <li><strong>Prefix Caching（前缀缓存）</strong>：固定不变的系统提示词、长文档只算一次，多轮复用直接打折；</li>
-    <li><strong>结果缓存</strong>：相同/相似问题直接命中缓存。</li>
-  </ul>
+经验值：7B 模型 4bit 量化后约 4~5GB，一台笔记本就能跑；70B 级别 4bit 也要 40GB+，需要多卡或专用推理机。
 
-  <div class="tip"><b>✅ 一句话记忆：</b>推理优化三板斧——<strong>省算力（KV Cache / 投机解码）、省显存（量化 / PagedAttention）、省金钱（路由小模型 / 前缀缓存）</strong>。部署先 API 起步，量大了再自托管，隐私敏感就 Ollama 本地跑。</div>
+## 省钱的另一个杠杆：模型分层路由
 
-  <p>效率和成本压住了，模型还能更"聪明"吗？下一篇：<strong>多模态与推理模型</strong>。</p>
-</article>
+  - **简单步骤用小模型**：分类、抽取、格式转换交给 7B 级别，只有复杂推理才请出大模型；
+- **Prefix Caching（前缀缓存）**：固定不变的系统提示词、长文档只算一次，多轮复用直接打折；
+- **结果缓存**：相同/相似问题直接命中缓存。
 
-<div class="pager">
-  <a class="prev" href="09-finetuning.html"><span class="dir">← 上一篇</span>微调与对齐</a>
-  <a class="next" href="11-multimodal-reasoning.html"><span class="dir">下一篇 →</span>多模态与推理模型</a>
-</div>
-</div>
+  ::: tip
+推理优化三板斧——**省算力（KV Cache / 投机解码）、省显存（量化 / PagedAttention）、省金钱（路由小模型 / 前缀缓存）**。部署先 API 起步，量大了再自托管，隐私敏感就 Ollama 本地跑。
+:::
 
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+效率和成本压住了，模型还能更"聪明"吗？下一篇：**多模态与推理模型**。

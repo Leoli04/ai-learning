@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>06 · Agent 核心范式：ReAct 与多智能体 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: Agent 核心范式：ReAct、规划、反思与多智能体
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 06</div>
-  <h1>Agent 核心范式：ReAct、规划、反思与多智能体</h1>
-  <div class="meta">约 9 分钟 · 关键词：Function Calling、ReAct、Plan-and-Execute、Reflexion、Multi-Agent</div>
+# Agent 核心范式：ReAct、规划、反思与多智能体
 
-  <h2>底座机制：Function Calling（工具调用）</h2>
-  <p>一切 Agent 的地基。你把工具的"说明书"（名称、参数 schema、用途描述）随请求发给模型，模型需要时输出一段<strong>结构化的调用意图</strong>：</p>
+> 约 9 分钟 · 关键词：Function Calling、ReAct、Plan-and-Execute、Reflexion、Multi-Agent
+
+## 底座机制：Function Calling（工具调用）
+
+一切 Agent 的地基。你把工具的"说明书"（名称、参数 schema、用途描述）随请求发给模型，模型需要时输出一段**结构化的调用意图**：
+
   <pre><code>{"name": "get_weather", "arguments": {"city": "上海"}}</code></pre>
-  <p>注意：<strong>模型自己不执行任何东西</strong>，它只"点名"。真正执行的是你的程序，执行结果再喂回给模型。模型 ↔ 程序之间就是这一来一回的"点菜—上菜"循环。</p>
 
-  <h2>范式演进：从"边想边做"到"团队作战"</h2>
+注意：**模型自己不执行任何东西**，它只"点名"。真正执行的是你的程序，执行结果再喂回给模型。模型 ↔ 程序之间就是这一来一回的"点菜—上菜"循环。
+
+## 范式演进：从"边想边做"到"团队作战"
+
   <figure class="figure">
     <svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
@@ -61,7 +53,8 @@
     <figcaption>图 6：Agent 四大范式——从单循环到团队协作</figcaption>
   </figure>
 
-  <h2>ReAct 循环长什么样？</h2>
+## ReAct 循环长什么样？
+
   <pre><code>用户：帮我把仓库里的 TODO 整理成清单。
 Thought: 我需要先找到所有 TODO 标记。
 Action: grep(pattern="TODO", path="src/")
@@ -69,25 +62,15 @@ Observation: src/api.py:12 TODO 校验分页参数；src/db.py:40 TODO 加索引
 Thought: 找到 2 处，直接汇总即可，无需更多工具。
 Final Answer: 共 2 个 TODO：1) api.py 校验分页参数 2) db.py 加索引</code></pre>
 
-  <h2>成熟 Agent 还标配四样"护栏"</h2>
-  <ul>
-    <li><strong>最大步数 / 预算限制</strong>：防死循环烧钱；</li>
-    <li><strong>沙箱 + 权限审批</strong>：文件写入、命令执行先隔离或先问人；</li>
-    <li><strong>结构化输出校验</strong>：JSON 不合法就重试；</li>
-    <li><strong>人工介入点（human-in-the-loop）</strong>：关键决策停下等确认——企业落地的刚需。</li>
-  </ul>
+## 成熟 Agent 还标配四样"护栏"
 
-  <div class="tip"><b>✅ 一句话记忆：</b>Agent = <strong>LLM + 工具 + 循环</strong>。范式只回答一个问题：<strong>循环里"下一步"由谁、按什么策略决定</strong>——ReAct 走一步看一步，Plan 先定清单，Reflexion 错了复盘，Multi-Agent 拉团队。</div>
+  - **最大步数 / 预算限制**：防死循环烧钱；
+- **沙箱 + 权限审批**：文件写入、命令执行先隔离或先问人；
+- **结构化输出校验**：JSON 不合法就重试；
+- **人工介入点（human-in-the-loop）**：关键决策停下等确认——企业落地的刚需。
 
-  <p>会干活了，但会话一关就失忆——下一篇：<strong>记忆与上下文工程</strong>。</p>
-</article>
+  ::: tip
+Agent = **LLM + 工具 + 循环**。范式只回答一个问题：**循环里"下一步"由谁、按什么策略决定**——ReAct 走一步看一步，Plan 先定清单，Reflexion 错了复盘，Multi-Agent 拉团队。
+:::
 
-<div class="pager">
-  <a class="prev" href="05-vector-db.html"><span class="dir">← 上一篇</span>向量数据库与检索栈</a>
-  <a class="next" href="07-memory-context.html"><span class="dir">下一篇 →</span>记忆与上下文工程</a>
-</div>
-</div>
-
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+会干活了，但会话一关就失忆——下一篇：**记忆与上下文工程**。

@@ -1,30 +1,18 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>02 · Transformer 与训练三部曲 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: Transformer 与训练三部曲：大模型是怎么炼成的
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 02</div>
-  <h1>Transformer 与训练三部曲：大模型是怎么炼成的</h1>
-  <div class="meta">约 8 分钟 · 关键词：Token、Attention、预训练 / SFT / RLHF、Scaling Laws、MoE</div>
+# Transformer 与训练三部曲：大模型是怎么炼成的
 
-  <h2>先搞懂三个词：Token、Embedding、Attention</h2>
-  <ul>
-    <li><strong>Token</strong>：模型眼里的"字"。文本先被切成 token（约 0.7 个汉字或 0.75 个英文单词一个），模型从头到尾只处理 token 序列；</li>
-    <li><strong>Embedding</strong>：每个 token 被换成一串数字（向量），语义相近的词向量相近——这是后面 RAG、向量库的同一块地基；</li>
-    <li><strong>Attention（注意力）</strong>：Transformer 的心脏。处理每个 token 时，"回看"上下文里的所有 token，按相关性分配权重。<em>"它"指代谁？</em>——注意力会让"它"这个 token 强烈关注前面的候选名词。</li>
-  </ul>
-  <p>模型生成文本的方式朴素得出人意料：<strong>一次预测一个 token</strong>。给定前文，预测下一个最合理的 token，拼上去，再预测下一个——所谓生成，就是不断"接龙"。</p>
+> 约 8 分钟 · 关键词：Token、Attention、预训练 / SFT / RLHF、Scaling Laws、MoE
+
+## 先搞懂三个词：Token、Embedding、Attention
+
+  - **Token**：模型眼里的"字"。文本先被切成 token（约 0.7 个汉字或 0.75 个英文单词一个），模型从头到尾只处理 token 序列；
+- **Embedding**：每个 token 被换成一串数字（向量），语义相近的词向量相近——这是后面 RAG、向量库的同一块地基；
+- **Attention（注意力）**：Transformer 的心脏。处理每个 token 时，"回看"上下文里的所有 token，按相关性分配权重。*"它"指代谁？*——注意力会让"它"这个 token 强烈关注前面的候选名词。
+
+模型生成文本的方式朴素得出人意料：**一次预测一个 token**。给定前文，预测下一个最合理的 token，拼上去，再预测下一个——所谓生成，就是不断"接龙"。
 
   <figure class="figure">
     <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +50,8 @@
     <figcaption>图 2a：LLM 的工作方式——切 token → 过 Transformer 层 → 预测下一个 token → 接龙</figcaption>
   </figure>
 
-  <h2>训练三部曲：野孩子 → 学徒 → 职场人</h2>
+## 训练三部曲：野孩子 → 学徒 → 职场人
+
   <table>
     <tr><th>阶段</th><th>干什么</th><th>学到什么</th></tr>
     <tr><td><strong>① 预训练</strong><br>Pre-training</td><td>在互联网规模的海量文本上"猜下一个词"，几十万亿 token</td><td>语言规律 + 世界知识。最贵的一步（千万美元级算力）</td></tr>
@@ -70,23 +59,13 @@
     <tr><td><strong>③ 偏好对齐</strong><br>RLHF / DPO</td><td>人类对多个回答排序，模型朝"人类喜欢的方向"调整（DPO 是更简单的替代方案）</td><td>变得有用、诚实、无害——ChatGPT 体验好的关键</td></tr>
   </table>
 
-  <h3>两个不可不知的架构词</h3>
-  <ul>
-    <li><strong>Scaling Laws（规模定律）</strong>：模型能力随参数量、数据量、算力按可预测的规律提升——这是"堆料军备竞赛"的理论依据，也催生了 2020 年 GPT-3 的"涌现能力"；</li>
-    <li><strong>MoE（混合专家）</strong>：把一个大模型拆成多个"专家"网络，每个 token 只激活其中一小部分。等效于"总参数巨大、单次计算便宜"，DeepSeek-V3/R1 都是 MoE 架构的代表。</li>
-  </ul>
+### 两个不可不知的架构词
 
-  <div class="tip"><b>✅ 一句话记忆：</b>LLM = Transformer（架构）+ 接龙式生成（机制）+ 三部曲训练（预训练给知识、SFT 给格式、RLHF 给人品）。后面所有的"外挂"，都是在不改这三步的前提下做的增强。</div>
+  - **Scaling Laws（规模定律）**：模型能力随参数量、数据量、算力按可预测的规律提升——这是"堆料军备竞赛"的理论依据，也催生了 2020 年 GPT-3 的"涌现能力"；
+- **MoE（混合专家）**：把一个大模型拆成多个"专家"网络，每个 token 只激活其中一小部分。等效于"总参数巨大、单次计算便宜"，DeepSeek-V3/R1 都是 MoE 架构的代表。
 
-  <p>模型炼成了，怎么"不训练就指挥它"？下一篇：<strong>Prompt 工程与上下文学习</strong>。</p>
-</article>
+  ::: tip
+LLM = Transformer（架构）+ 接龙式生成（机制）+ 三部曲训练（预训练给知识、SFT 给格式、RLHF 给人品）。后面所有的"外挂"，都是在不改这三步的前提下做的增强。
+:::
 
-<div class="pager">
-  <a class="prev" href="01-llm-era.html"><span class="dir">← 上一篇</span>大模型这几年</a>
-  <a class="next" href="03-prompt.html"><span class="dir">下一篇 →</span>Prompt 工程与上下文学习</a>
-</div>
-</div>
-
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+模型炼成了，怎么"不训练就指挥它"？下一篇：**Prompt 工程与上下文学习**。

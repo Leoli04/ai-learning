@@ -1,34 +1,28 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>08 · Skill 与 MCP：工具与经验的标准 — AI 基础学习系列</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<header class="site-header"><div class="inner">
-  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
-  <nav><a href="../index.html">目录</a></nav>
-</div></header>
+---
+title: Skill 与 MCP：经验怎么沉淀，工具怎么标准化
+---
 
-<div class="container">
-<article class="article">
-  <div class="kicker">AI 基础学习系列 · 08</div>
-  <h1>Skill 与 MCP：经验怎么沉淀，工具怎么标准化</h1>
-  <div class="meta">约 7 分钟 · 关键词：Agent Skills、SKILL.md、MCP、渐进式披露</div>
+# Skill 与 MCP：经验怎么沉淀，工具怎么标准化
 
-  <h2>Skill：写给模型看的"操作手册"</h2>
-  <p>Agent 会调工具后，新问题是：<strong>流程性经验每次都要现场重教</strong>。比如"发一篇公众号文章"涉及排版规范、图片上传、接口细节——写进每次对话又贵又容易漏。</p>
-  <p><strong>Skill（技能）</strong>的解法是把方法论打包成文件夹，核心是一个 <code>SKILL.md</code>：</p>
+> 约 7 分钟 · 关键词：Agent Skills、SKILL.md、MCP、渐进式披露
+
+## Skill：写给模型看的"操作手册"
+
+Agent 会调工具后，新问题是：**流程性经验每次都要现场重教**。比如"发一篇公众号文章"涉及排版规范、图片上传、接口细节——写进每次对话又贵又容易漏。
+
+**Skill（技能）**的解法是把方法论打包成文件夹，核心是一个 `SKILL.md`：
+
   <pre><code>my-skill/
 ├── SKILL.md          # 入口：名称、描述、何时触发、操作步骤
 ├── references/       # 详细文档：API 说明、规范细则
 └── scripts/          # 可选：配套可执行脚本</code></pre>
-  <p>它不是代码插件，而是<strong>按需加载的说明书</strong>。关键设计是<strong>渐进式披露（Progressive Disclosure）</strong>：平时只有名称和一句话描述占着上下文（几十 token），任务匹配时才读正文，需要细节再翻 references——三层按需加载，几乎不浪费窗口。这套规范由 Anthropic 在 2025 年提出，开源社区（包括各 Harness 框架）迅速跟进，团队可以把技能库放进 git 共享。</p>
 
-  <h2>MCP：工具世界的 USB-C</h2>
-  <p>Function Calling 是各家 API 的私有格式，M 工具接到 A 框架要写一份适配，接到 B 框架再写一份。2024 年底 Anthropic 发布 <strong>MCP（Model Context Protocol）</strong>，把"模型 ↔ 工具/数据源"的接口标准化：</p>
+它不是代码插件，而是**按需加载的说明书**。关键设计是**渐进式披露（Progressive Disclosure）**：平时只有名称和一句话描述占着上下文（几十 token），任务匹配时才读正文，需要细节再翻 references——三层按需加载，几乎不浪费窗口。这套规范由 Anthropic 在 2025 年提出，开源社区（包括各 Harness 框架）迅速跟进，团队可以把技能库放进 git 共享。
+
+## MCP：工具世界的 USB-C
+
+Function Calling 是各家 API 的私有格式，M 工具接到 A 框架要写一份适配，接到 B 框架再写一份。2024 年底 Anthropic 发布 **MCP（Model Context Protocol）**，把"模型 ↔ 工具/数据源"的接口标准化：
+
   <figure class="figure">
     <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
@@ -61,9 +55,11 @@
     </svg>
     <figcaption>图 8：MCP 架构——Host（Agent）经协议连接任意数量的 Server（工具方）</figcaption>
   </figure>
-  <p>Server 可以暴露三类东西：<strong>Tools</strong>（可执行的操作）、<strong>Resources</strong>（可读取的数据）、<strong>Prompts</strong>（预置提示模板）。2025 年起 OpenAI、Google 等相继宣布支持，MCP 成为事实标准——这解决的是<strong>生态复用</strong>问题：写一个 MCP Server，全行业的 Agent 都能用。</p>
 
-  <h2>Skill vs MCP vs Function Calling：一张表分清</h2>
+Server 可以暴露三类东西：**Tools**（可执行的操作）、**Resources**（可读取的数据）、**Prompts**（预置提示模板）。2025 年起 OpenAI、Google 等相继宣布支持，MCP 成为事实标准——这解决的是**生态复用**问题：写一个 MCP Server，全行业的 Agent 都能用。
+
+## Skill vs MCP vs Function Calling：一张表分清
+
   <table>
     <tr><th></th><th>Function Calling</th><th>MCP</th><th>Skill</th></tr>
     <tr><td>本质</td><td>API 能力：模型输出调用意图</td><td>传输标准：工具的通用接口</td><td>知识资产：打包的方法论文档</td></tr>
@@ -71,17 +67,8 @@
     <tr><td>形态</td><td>请求里的 JSON schema</td><td>独立进程 / 服务</td><td>Markdown 文件夹</td></tr>
   </table>
 
-  <div class="tip"><b>✅ 一句话记忆：</b><strong>Function Calling 是动作，MCP 是插座标准，Skill 是操作手册。</strong>三者叠加 = 模型能点菜（FC）、菜谱全行业通用（MCP）、老师傅的手艺可以装订成册随取随用（Skill）。</div>
+  ::: tip
+**Function Calling 是动作，MCP 是插座标准，Skill 是操作手册。**三者叠加 = 模型能点菜（FC）、菜谱全行业通用（MCP）、老师傅的手艺可以装订成册随取随用（Skill）。
+:::
 
-  <p>工具与经验都齐了，还差一块拼图：不改模型的前提下，怎么让它更"对味"？下一篇：<strong>微调与对齐</strong>。</p>
-</article>
-
-<div class="pager">
-  <a class="prev" href="07-memory-context.html"><span class="dir">← 上一篇</span>记忆与上下文工程</a>
-  <a class="next" href="09-finetuning.html"><span class="dir">下一篇 →</span>微调与对齐：SFT、LoRA、RLHF</a>
-</div>
-</div>
-
-<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
-</body>
-</html>
+工具与经验都齐了，还差一块拼图：不改模型的前提下，怎么让它更"对味"？下一篇：**微调与对齐**。
