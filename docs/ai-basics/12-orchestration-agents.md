@@ -36,30 +36,30 @@ Agent 擅长开放性任务，但企业里大量需求是**固定流程**：每�
   <figure class="figure">
     <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
-        <rect x="60" y="24" width="600" height="52" rx="9" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="90" y="46" class="svg-text" font-weight="bold">交互层</text>
-        <text x="200" y="46" class="svg-text" font-size="11">CLI / Web UI / IDE 插件 / API</text>
-        <text x="90" y="66" class="svg-dim" font-size="10">人下指令、看进度、做审批</text>
-        <rect x="60" y="84" width="600" height="52" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="90" y="106" class="svg-text" font-weight="bold">编排层</text>
-        <text x="200" y="106" class="svg-text" font-size="11">Agent 循环（ReAct/Plan）· 多智能体协作 · 人工介入点</text>
-        <text x="90" y="126" class="svg-dim" font-size="10">决定"下一步干什么"</text>
-        <rect x="60" y="144" width="600" height="52" rx="9" fill="#161b22" stroke="#3fb950"/>
-        <text x="90" y="166" class="svg-text" font-weight="bold">工具层</text>
-        <text x="200" y="166" class="svg-text" font-size="11">Function Calling · MCP · 文件/终端/浏览器 · Skill 操作手册</text>
-        <text x="90" y="186" class="svg-dim" font-size="10">真正"动手"的地方</text>
-        <rect x="60" y="204" width="600" height="52" rx="9" fill="#161b22" stroke="#bc8cff"/>
-        <text x="90" y="226" class="svg-text" font-weight="bold">记忆层</text>
-        <text x="200" y="226" class="svg-text" font-size="11">会话日志 · 长期记忆 · RAG / 向量库</text>
-        <text x="90" y="246" class="svg-dim" font-size="10">知道什么、记住了什么</text>
-        <rect x="60" y="264" width="600" height="52" rx="9" fill="#161b22" stroke="#f0883e"/>
-        <text x="90" y="286" class="svg-text" font-weight="bold">模型层</text>
-        <text x="200" y="286" class="svg-text" font-size="11">LLM / VLM / 推理模型 · 量化部署 · 分层路由</text>
-        <text x="90" y="306" class="svg-dim" font-size="10">思考的引擎，可替换可分层</text>
-        <rect x="60" y="324" width="600" height="52" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="90" y="346" class="svg-text" font-weight="bold">安全层（纵切所有层）</text>
-        <text x="330" y="346" class="svg-text" font-size="11">沙箱隔离 · 权限审批 · 输出校验 · 审计日志</text>
-        <text x="90" y="366" class="svg-dim" font-size="10">不是一层，是贯穿每一层的约束</text>
+        <rect x="60" y="24" width="600" height="52" rx="9" stroke-width="2" class="cell-em link"/>
+        <text x="90" y="46" font-weight="bold">交互层</text>
+        <text x="200" y="46" font-size="11">CLI / Web UI / IDE 插件 / API</text>
+        <text x="90" y="66" font-size="10" class="dim">人下指令、看进度、做审批</text>
+        <rect x="60" y="84" width="600" height="52" rx="9" class="cell"/>
+        <text x="90" y="106" font-weight="bold">编排层</text>
+        <text x="200" y="106" font-size="11">Agent 循环（ReAct/Plan）· 多智能体协作 · 人工介入点</text>
+        <text x="90" y="126" font-size="10" class="dim">决定"下一步干什么"</text>
+        <rect x="60" y="144" width="600" height="52" rx="9" class="cell link-green"/>
+        <text x="90" y="166" font-weight="bold">工具层</text>
+        <text x="200" y="166" font-size="11">Function Calling · MCP · 文件/终端/浏览器 · Skill 操作手册</text>
+        <text x="90" y="186" font-size="10" class="dim">真正"动手"的地方</text>
+        <rect x="60" y="204" width="600" height="52" rx="9" class="cell link-purple"/>
+        <text x="90" y="226" font-weight="bold">记忆层</text>
+        <text x="200" y="226" font-size="11">会话日志 · 长期记忆 · RAG / 向量库</text>
+        <text x="90" y="246" font-size="10" class="dim">知道什么、记住了什么</text>
+        <rect x="60" y="264" width="600" height="52" rx="9" class="cell link-orange"/>
+        <text x="90" y="286" font-weight="bold">模型层</text>
+        <text x="200" y="286" font-size="11">LLM / VLM / 推理模型 · 量化部署 · 分层路由</text>
+        <text x="90" y="306" font-size="10" class="dim">思考的引擎，可替换可分层</text>
+        <rect x="60" y="324" width="600" height="52" rx="9" class="cell"/>
+        <text x="90" y="346" font-weight="bold">安全层（纵切所有层）</text>
+        <text x="330" y="346" font-size="11">沙箱隔离 · 权限审批 · 输出校验 · 审计日志</text>
+        <text x="90" y="366" font-size="10" class="dim">不是一层，是贯穿每一层的约束</text>
       </g>
     </svg>
     <figcaption>图 12：Agent 技术栈六层 + 贯穿式安全层——换任何一层的产品，结构都类似</figcaption>

@@ -33,21 +33,21 @@ pnpm dsh web</code></pre>
 
   <figure class="figure">
     <svg viewBox="0 0 720 160" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b8cff"/></marker></defs>
+      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="accent-blue-fill"/></marker></defs>
       <g font-size="13">
-        <rect x="20" y="50" width="150" height="56" rx="10" fill="#161b22" stroke="#5b8cff"/>
-        <text x="95" y="73" text-anchor="middle" class="svg-text">npx dsh web</text>
-        <text x="95" y="93" text-anchor="middle" class="svg-dim" font-size="11">:3080</text>
-        <rect x="200" y="50" width="150" height="56" rx="10" fill="#161b22" stroke="#30363d"/>
-        <text x="275" y="73" text-anchor="middle" class="svg-text">填 API Key</text>
-        <text x="275" y="93" text-anchor="middle" class="svg-dim" font-size="11">即时生效</text>
-        <rect x="380" y="50" width="150" height="56" rx="10" fill="#161b22" stroke="#30363d"/>
-        <text x="455" y="73" text-anchor="middle" class="svg-text">选工作区</text>
-        <text x="455" y="93" text-anchor="middle" class="svg-dim" font-size="11">解锁输入框</text>
-        <rect x="560" y="50" width="140" height="56" rx="10" fill="rgba(63,185,80,0.10)" stroke="#3fb950"/>
-        <text x="630" y="73" text-anchor="middle" class="svg-text">发任务 ✅</text>
-        <text x="630" y="93" text-anchor="middle" class="svg-dim" font-size="11">审批后执行</text>
-        <g stroke="#5b8cff" stroke-width="1.8" fill="none" marker-end="url(#a)">
+        <rect x="20" y="50" width="150" height="56" rx="10" class="cell link"/>
+        <text x="95" y="73" text-anchor="middle">npx dsh web</text>
+        <text x="95" y="93" text-anchor="middle" font-size="11" class="dim">:3080</text>
+        <rect x="200" y="50" width="150" height="56" rx="10" class="cell"/>
+        <text x="275" y="73" text-anchor="middle">填 API Key</text>
+        <text x="275" y="93" text-anchor="middle" font-size="11" class="dim">即时生效</text>
+        <rect x="380" y="50" width="150" height="56" rx="10" class="cell"/>
+        <text x="455" y="73" text-anchor="middle">选工作区</text>
+        <text x="455" y="93" text-anchor="middle" font-size="11" class="dim">解锁输入框</text>
+        <rect x="560" y="50" width="140" height="56" rx="10" class="cell-em link-green"/>
+        <text x="630" y="73" text-anchor="middle">发任务 ✅</text>
+        <text x="630" y="93" text-anchor="middle" font-size="11" class="dim">审批后执行</text>
+        <g stroke-width="1.8" marker-end="url(#a)" class="link">
           <line x1="170" y1="78" x2="198" y2="78"/>
           <line x1="350" y1="78" x2="378" y2="78"/>
           <line x1="530" y1="78" x2="558" y2="78"/>

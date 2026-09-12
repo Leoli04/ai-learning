@@ -13,51 +13,51 @@ RAG 的效果好坏，八成取决于检索质量。一条完整的检索流水�
   <figure class="figure">
     <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
-        <defs><marker id="va" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b8cff"/></marker></defs>
-        <text x="40" y="28" class="svg-dim">① 切分 Chunking</text>
-        <rect x="40" y="40" width="200" height="60" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="140" y="62" text-anchor="middle" class="svg-text">文档 → 段落块</text>
-        <text x="140" y="82" text-anchor="middle" class="svg-dim" font-size="11">固定长度 / 递归 / 按语义边界</text>
-        <text x="300" y="28" class="svg-dim">② 向量化 Embedding</text>
-        <rect x="300" y="40" width="200" height="60" rx="9" fill="#161b22" stroke="#bc8cff"/>
-        <text x="400" y="62" text-anchor="middle" class="svg-text">每个块 → 高维向量</text>
-        <text x="400" y="82" text-anchor="middle" class="svg-dim" font-size="11">bge / m3e / OpenAI text-embedding</text>
-        <text x="560" y="28" class="svg-dim">③ 建索引</text>
-        <rect x="560" y="40" width="130" height="60" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="625" y="62" text-anchor="middle" class="svg-text">向量数据库</text>
-        <text x="625" y="82" text-anchor="middle" class="svg-dim" font-size="11">Milvus / Qdrant / pgvector</text>
-        <g stroke="#5b8cff" stroke-width="1.8" fill="none" marker-end="url(#va)">
+        <defs><marker id="va" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="accent-blue-fill"/></marker></defs>
+        <text x="40" y="28" class="dim">① 切分 Chunking</text>
+        <rect x="40" y="40" width="200" height="60" rx="9" class="cell"/>
+        <text x="140" y="62" text-anchor="middle">文档 → 段落块</text>
+        <text x="140" y="82" text-anchor="middle" font-size="11" class="dim">固定长度 / 递归 / 按语义边界</text>
+        <text x="300" y="28" class="dim">② 向量化 Embedding</text>
+        <rect x="300" y="40" width="200" height="60" rx="9" class="cell link-purple"/>
+        <text x="400" y="62" text-anchor="middle">每个块 → 高维向量</text>
+        <text x="400" y="82" text-anchor="middle" font-size="11" class="dim">bge / m3e / OpenAI text-embedding</text>
+        <text x="560" y="28" class="dim">③ 建索引</text>
+        <rect x="560" y="40" width="130" height="60" rx="9" class="cell"/>
+        <text x="625" y="62" text-anchor="middle">向量数据库</text>
+        <text x="625" y="82" text-anchor="middle" font-size="11" class="dim">Milvus / Qdrant / pgvector</text>
+        <g stroke-width="1.8" marker-end="url(#va)" class="link">
           <line x1="240" y1="70" x2="298" y2="70"/>
           <line x1="500" y1="70" x2="558" y2="70"/>
         </g>
         <!-- 查询侧 -->
-        <text x="40" y="150" class="svg-dim">④ 查询（在线）</text>
-        <rect x="40" y="162" width="130" height="52" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="105" y="184" text-anchor="middle" class="svg-text">用户问题</text>
-        <text x="105" y="202" text-anchor="middle" class="svg-dim" font-size="11">同样转向量</text>
-        <rect x="220" y="162" width="170" height="52" rx="9" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="305" y="184" text-anchor="middle" class="svg-text">ANN 近似最近邻搜索</text>
-        <text x="305" y="202" text-anchor="middle" class="svg-dim" font-size="11">HNSW / IVF，毫秒级取 Top-K</text>
-        <rect x="440" y="162" width="120" height="52" rx="9" fill="#161b22" stroke="#f0883e"/>
-        <text x="500" y="184" text-anchor="middle" class="svg-text">Rerank 重排</text>
-        <text x="500" y="202" text-anchor="middle" class="svg-dim" font-size="11">精排模型精选</text>
-        <rect x="600" y="162" width="90" height="52" rx="9" fill="rgba(63,185,80,0.10)" stroke="#3fb950"/>
-        <text x="645" y="192" text-anchor="middle" class="svg-text">喂给 LLM</text>
-        <g stroke="#5b8cff" stroke-width="1.8" fill="none" marker-end="url(#va)">
+        <text x="40" y="150" class="dim">④ 查询（在线）</text>
+        <rect x="40" y="162" width="130" height="52" rx="9" class="cell"/>
+        <text x="105" y="184" text-anchor="middle">用户问题</text>
+        <text x="105" y="202" text-anchor="middle" font-size="11" class="dim">同样转向量</text>
+        <rect x="220" y="162" width="170" height="52" rx="9" stroke-width="2" class="cell-em link"/>
+        <text x="305" y="184" text-anchor="middle">ANN 近似最近邻搜索</text>
+        <text x="305" y="202" text-anchor="middle" font-size="11" class="dim">HNSW / IVF，毫秒级取 Top-K</text>
+        <rect x="440" y="162" width="120" height="52" rx="9" class="cell link-orange"/>
+        <text x="500" y="184" text-anchor="middle">Rerank 重排</text>
+        <text x="500" y="202" text-anchor="middle" font-size="11" class="dim">精排模型精选</text>
+        <rect x="600" y="162" width="90" height="52" rx="9" class="cell-em link-green"/>
+        <text x="645" y="192" text-anchor="middle">喂给 LLM</text>
+        <g stroke-width="1.8" marker-end="url(#va)" class="link">
           <line x1="170" y1="188" x2="218" y2="188"/>
           <line x1="390" y1="188" x2="438" y2="188"/>
           <line x1="560" y1="188" x2="598" y2="188"/>
         </g>
-        <text x="360" y="250" text-anchor="middle" class="svg-dim" font-size="11">入库三步（离线、一次性）→ 查询四步（在线、每次提问）</text>
+        <text x="360" y="250" text-anchor="middle" font-size="11" class="dim">入库三步（离线、一次性）→ 查询四步（在线、每次提问）</text>
         <!-- 对比 -->
         <g font-size="11">
-          <rect x="40" y="280" width="300" height="24" rx="5" fill="#161b22" stroke="#3fb950"/>
-          <text x="190" y="296" text-anchor="middle" class="svg-text">向量检索：懂语义，"报销"≈"差旅费办法"</text>
-          <rect x="380" y="280" width="300" height="24" rx="5" fill="#161b22" stroke="#30363d"/>
-          <text x="530" y="296" text-anchor="middle" class="svg-dim">关键词 BM25：懂精确，型号/编号必须字对字</text>
-          <rect x="40" y="312" width="640" height="52" rx="9" fill="rgba(240,136,62,0.08)" stroke="#f0883e"/>
-          <text x="360" y="334" text-anchor="middle" class="svg-text" font-size="12">✅ 主流做法 = 混合检索：两路都查，结果合并（RRF），再交给 Rerank 精选</text>
-          <text x="360" y="354" text-anchor="middle" class="svg-dim" font-size="11">各补对方的短板：向量防"字对字搜不到"，关键词防"专有名词被稀释"</text>
+          <rect x="40" y="280" width="300" height="24" rx="5" class="cell link-green"/>
+          <text x="190" y="296" text-anchor="middle">向量检索：懂语义，"报销"≈"差旅费办法"</text>
+          <rect x="380" y="280" width="300" height="24" rx="5" class="cell"/>
+          <text x="530" y="296" text-anchor="middle" class="dim">关键词 BM25：懂精确，型号/编号必须字对字</text>
+          <rect x="40" y="312" width="640" height="52" rx="9" class="cell-em link-orange"/>
+          <text x="360" y="334" text-anchor="middle" font-size="12">✅ 主流做法 = 混合检索：两路都查，结果合并（RRF），再交给 Rerank 精选</text>
+          <text x="360" y="354" text-anchor="middle" font-size="11" class="dim">各补对方的短板：向量防"字对字搜不到"，关键词防"专有名词被稀释"</text>
         </g>
       </g>
     </svg>

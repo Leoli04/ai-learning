@@ -23,22 +23,22 @@ title: 记忆与上下文工程：把"老司机的经验"固化下来
   <figure class="figure">
     <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
       <g font-size="13">
-        <rect x="40" y="30" width="640" height="52" rx="10" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="80" y="52" class="svg-text" font-weight="bold">工作记忆</text>
-        <text x="200" y="52" class="svg-text" font-size="12">＝ 当前上下文窗口：这轮对话的全部内容</text>
-        <text x="80" y="72" class="svg-dim" font-size="11">快，但窗口有限，会话结束即失</text>
-        <rect x="40" y="102" width="640" height="52" rx="10" fill="#161b22" stroke="#3fb950"/>
-        <text x="80" y="124" class="svg-text" font-weight="bold">会话记忆</text>
-        <text x="200" y="124" class="svg-text" font-size="12">＝ Session Log / 摘要：本会话的事实账本，可恢复、可分叉</text>
-        <text x="80" y="144" class="svg-dim" font-size="11">断线重连、回到历史节点，靠它</text>
-        <rect x="40" y="174" width="640" height="52" rx="10" fill="#161b22" stroke="#bc8cff"/>
-        <text x="80" y="196" class="svg-text" font-weight="bold">长期记忆</text>
-        <text x="200" y="196" class="svg-text" font-size="12">＝ 用户偏好 / 项目约定：跨会话持久，常以向量库或文件存储</text>
-        <text x="80" y="216" class="svg-dim" font-size="11">"记住我喜欢简洁回复"就存在这一层</text>
-        <rect x="40" y="246" width="640" height="44" rx="10" fill="#161b22" stroke="#f0883e"/>
-        <text x="80" y="266" class="svg-text" font-weight="bold">技能库（Skill）</text>
-        <text x="240" y="266" class="svg-text" font-size="12">＝ 不是"经历过的事"，而是"被教会的方法"：按需加载的操作手册</text>
-        <text x="80" y="283" class="svg-dim" font-size="11">前三层记事实，这一层存能力</text>
+        <rect x="40" y="30" width="640" height="52" rx="10" stroke-width="2" class="cell-em link"/>
+        <text x="80" y="52" font-weight="bold">工作记忆</text>
+        <text x="200" y="52" font-size="12">＝ 当前上下文窗口：这轮对话的全部内容</text>
+        <text x="80" y="72" font-size="11" class="dim">快，但窗口有限，会话结束即失</text>
+        <rect x="40" y="102" width="640" height="52" rx="10" class="cell link-green"/>
+        <text x="80" y="124" font-weight="bold">会话记忆</text>
+        <text x="200" y="124" font-size="12">＝ Session Log / 摘要：本会话的事实账本，可恢复、可分叉</text>
+        <text x="80" y="144" font-size="11" class="dim">断线重连、回到历史节点，靠它</text>
+        <rect x="40" y="174" width="640" height="52" rx="10" class="cell link-purple"/>
+        <text x="80" y="196" font-weight="bold">长期记忆</text>
+        <text x="200" y="196" font-size="12">＝ 用户偏好 / 项目约定：跨会话持久，常以向量库或文件存储</text>
+        <text x="80" y="216" font-size="11" class="dim">"记住我喜欢简洁回复"就存在这一层</text>
+        <rect x="40" y="246" width="640" height="44" rx="10" class="cell link-orange"/>
+        <text x="80" y="266" font-weight="bold">技能库（Skill）</text>
+        <text x="240" y="266" font-size="12">＝ 不是"经历过的事"，而是"被教会的方法"：按需加载的操作手册</text>
+        <text x="80" y="283" font-size="11" class="dim">前三层记事实，这一层存能力</text>
       </g>
     </svg>
     <figcaption>图 5：记忆四层——工作记忆、会话记忆、长期记忆、技能库</figcaption>

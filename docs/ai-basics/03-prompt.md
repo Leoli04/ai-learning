@@ -20,30 +20,30 @@ title: Prompt 工程与上下文学习：不训练，也能"教"模型
     <svg viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg">
       <g font-size="13">
         <!-- 上下文长条 -->
-        <rect x="40" y="40" width="640" height="90" rx="12" fill="rgba(91,140,255,0.08)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="360" y="64" text-anchor="middle" class="svg-text" font-weight="bold">模型一次看到的"上下文窗口"</text>
-        <rect x="60" y="80" width="130" height="34" rx="7" fill="#161b22" stroke="#30363d"/>
-        <text x="125" y="102" text-anchor="middle" class="svg-text" font-size="12">系统指令</text>
-        <rect x="205" y="80" width="130" height="34" rx="7" fill="#161b22" stroke="#3fb950"/>
-        <text x="270" y="102" text-anchor="middle" class="svg-text" font-size="12">示例（few-shot）</text>
-        <rect x="350" y="80" width="130" height="34" rx="7" fill="#161b22" stroke="#bc8cff"/>
-        <text x="415" y="102" text-anchor="middle" class="svg-text" font-size="12">检索到的资料</text>
-        <rect x="495" y="80" width="165" height="34" rx="7" fill="#161b22" stroke="#f0883e"/>
-        <text x="577" y="102" text-anchor="middle" class="svg-text" font-size="12">用户当前的问题</text>
+        <rect x="40" y="40" width="640" height="90" rx="12" stroke-width="2" class="cell-em link"/>
+        <text x="360" y="64" text-anchor="middle" font-weight="bold">模型一次看到的"上下文窗口"</text>
+        <rect x="60" y="80" width="130" height="34" rx="7" class="cell"/>
+        <text x="125" y="102" text-anchor="middle" font-size="12">系统指令</text>
+        <rect x="205" y="80" width="130" height="34" rx="7" class="cell link-green"/>
+        <text x="270" y="102" text-anchor="middle" font-size="12">示例（few-shot）</text>
+        <rect x="350" y="80" width="130" height="34" rx="7" class="cell link-purple"/>
+        <text x="415" y="102" text-anchor="middle" font-size="12">检索到的资料</text>
+        <rect x="495" y="80" width="165" height="34" rx="7" class="cell link-orange"/>
+        <text x="577" y="102" text-anchor="middle" font-size="12">用户当前的问题</text>
         <!-- 三种技巧 -->
-        <rect x="40" y="170" width="195" height="120" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="137" y="200" text-anchor="middle" class="svg-text" font-weight="bold">Zero-shot</text>
-        <text x="137" y="226" text-anchor="middle" class="svg-dim" font-size="12">只给指令不给例子</text>
-        <text x="137" y="250" text-anchor="middle" class="svg-dim" font-size="12">"把这些评论分类为好评/差评"</text>
-        <rect x="262" y="170" width="195" height="120" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="360" y="200" text-anchor="middle" class="svg-text" font-weight="bold">Few-shot</text>
-        <text x="360" y="226" text-anchor="middle" class="svg-dim" font-size="12">给 3~5 个输入→输出示例</text>
-        <text x="360" y="250" text-anchor="middle" class="svg-dim" font-size="12">模型模仿例子的格式与标准</text>
-        <rect x="484" y="170" width="195" height="120" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="581" y="200" text-anchor="middle" class="svg-text" font-weight="bold">CoT 思维链</text>
-        <text x="581" y="226" text-anchor="middle" class="svg-dim" font-size="12">"请一步步思考再回答"</text>
-        <text x="581" y="250" text-anchor="middle" class="svg-dim" font-size="12">把推理摊开，正确率明显提升</text>
-        <line x1="360" y1="130" x2="360" y2="166" stroke="#5b8cff" stroke-width="2"/>
+        <rect x="40" y="170" width="195" height="120" rx="12" class="cell"/>
+        <text x="137" y="200" text-anchor="middle" font-weight="bold">Zero-shot</text>
+        <text x="137" y="226" text-anchor="middle" font-size="12" class="dim">只给指令不给例子</text>
+        <text x="137" y="250" text-anchor="middle" font-size="12" class="dim">"把这些评论分类为好评/差评"</text>
+        <rect x="262" y="170" width="195" height="120" rx="12" class="cell"/>
+        <text x="360" y="200" text-anchor="middle" font-weight="bold">Few-shot</text>
+        <text x="360" y="226" text-anchor="middle" font-size="12" class="dim">给 3~5 个输入→输出示例</text>
+        <text x="360" y="250" text-anchor="middle" font-size="12" class="dim">模型模仿例子的格式与标准</text>
+        <rect x="484" y="170" width="195" height="120" rx="12" class="cell"/>
+        <text x="581" y="200" text-anchor="middle" font-weight="bold">CoT 思维链</text>
+        <text x="581" y="226" text-anchor="middle" font-size="12" class="dim">"请一步步思考再回答"</text>
+        <text x="581" y="250" text-anchor="middle" font-size="12" class="dim">把推理摊开，正确率明显提升</text>
+        <line x1="360" y1="130" x2="360" y2="166" stroke-width="2" class="link"/>
         <polygon points="360,170 355,160 365,160" fill="#5b8cff"/>
       </g>
     </svg>

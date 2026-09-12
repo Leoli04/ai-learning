@@ -19,25 +19,25 @@ RAG、思维链、"老实说不知道"的训练都压低了幻觉率，但**模�
   <figure class="figure">
     <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
-        <line x1="60" y1="210" x2="680" y2="210" stroke="#30363d" stroke-width="2"/>
-        <line x1="60" y1="210" x2="60" y2="30" stroke="#30363d" stroke-width="2"/>
-        <text x="46" y="36" text-anchor="end" class="svg-dim">100%</text>
-        <text x="52" y="214" class="svg-dim">0</text>
+        <line x1="60" y1="210" x2="680" y2="210" stroke-width="2" class="cell"/>
+        <line x1="60" y1="210" x2="60" y2="30" stroke-width="2" class="cell"/>
+        <text x="46" y="36" text-anchor="end" class="dim">100%</text>
+        <text x="52" y="214" class="dim">0</text>
         <!-- 柱状 -->
-        <rect x="90"  y="44"  width="52" height="166" rx="4" fill="#3fb950"/>
-        <rect x="170" y="68"  width="52" height="142" rx="4" fill="#3fb950"/>
-        <rect x="250" y="100" width="52" height="110" rx="4" fill="#f0883e"/>
-        <rect x="330" y="126" width="52" height="84"  rx="4" fill="#f0883e"/>
-        <rect x="410" y="146" width="52" height="64"  rx="4" fill="#e5534b"/>
-        <rect x="490" y="160" width="52" height="50"  rx="4" fill="#e5534b"/>
-        <rect x="570" y="170" width="52" height="40"  rx="4" fill="#e5534b"/>
-        <g class="svg-text" text-anchor="middle">
+        <rect x="90"  y="44"  width="52" height="166" rx="4" class="accent-green-fill"/>
+        <rect x="170" y="68"  width="52" height="142" rx="4" class="accent-green-fill"/>
+        <rect x="250" y="100" width="52" height="110" rx="4" class="accent-orange-fill"/>
+        <rect x="330" y="126" width="52" height="84"  rx="4" class="accent-orange-fill"/>
+        <rect x="410" y="146" width="52" height="64"  rx="4" class="accent-red-fill"/>
+        <rect x="490" y="160" width="52" height="50"  rx="4" class="accent-red-fill"/>
+        <rect x="570" y="170" width="52" height="40"  rx="4" class="accent-red-fill"/>
+        <g text-anchor="middle">
           <text x="116" y="236">1 步</text><text x="196" y="236">3 步</text>
           <text x="276" y="236">5 步</text><text x="356" y="236">8 步</text>
           <text x="436" y="236">12 步</text><text x="516" y="236">16 步</text>
           <text x="596" y="236">20 步</text>
         </g>
-        <text x="360" y="252" text-anchor="middle" class="svg-dim">单步约 95% 正确 → 串联步数越多，整链成功率塌得越快（20 步 ≈ 36%）</text>
+        <text x="360" y="252" text-anchor="middle" class="dim">单步约 95% 正确 → 串联步数越多，整链成功率塌得越快（20 步 ≈ 36%）</text>
       </g>
     </svg>
     <figcaption>图 7：可靠性的"串联衰减"——步数是 Agent 落地的头号敌人</figcaption>

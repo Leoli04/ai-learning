@@ -26,23 +26,23 @@ Patch 通过**插件 id 定位一行配置，整行替换或插入新行**。叠
     <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
       <g font-size="14">
         <!-- 层1 -->
-        <rect x="60" y="240" width="600" height="52" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="90" y="272" class="svg-text">① dsh-base（共享底座：模型/工具/持久化/沙箱）</text>
+        <rect x="60" y="240" width="600" height="52" rx="9" class="cell"/>
+        <text x="90" y="272">① dsh-base（共享底座：模型/工具/持久化/沙箱）</text>
         <!-- 层2 -->
-        <rect x="60" y="180" width="600" height="52" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="90" y="212" class="svg-text">② dsh-web-app（浏览器界面）</text>
+        <rect x="60" y="180" width="600" height="52" rx="9" class="cell"/>
+        <text x="90" y="212">② dsh-web-app（浏览器界面）</text>
         <!-- 层3 -->
-        <rect x="60" y="120" width="600" height="52" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="90" y="152" class="svg-text">③ Profile 自带 patch</text>
+        <rect x="60" y="120" width="600" height="52" rx="9" class="cell"/>
+        <text x="90" y="152">③ Profile 自带 patch</text>
         <!-- 层4 -->
-        <rect x="60" y="60" width="600" height="52" rx="9" fill="rgba(63,185,80,0.10)" stroke="#3fb950" stroke-width="2"/>
-        <text x="90" y="92" class="svg-text">④ 你的 patch（home 级 / 命令行 --patch，优先级最高）</text>
+        <rect x="60" y="60" width="600" height="52" rx="9" stroke-width="2" class="cell-em link-green"/>
+        <text x="90" y="92">④ 你的 patch（home 级 / 命令行 --patch，优先级最高）</text>
         <!-- 侧标注 -->
-        <text x="30" y="272" class="svg-dim" font-size="12">底层</text>
-        <text x="30" y="92" class="svg-dim" font-size="12">顶层</text>
-        <path d="M 680 300 L 680 40" stroke="#f0883e" stroke-width="2" fill="none" marker-end="url(#arrowO)"/>
-        <defs><marker id="arrowO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#f0883e"/></marker></defs>
-        <text x="694" y="170" class="svg-dim" font-size="12" transform="rotate(90 694 170)">覆盖方向：上层覆盖下层</text>
+        <text x="30" y="272" font-size="12" class="dim">底层</text>
+        <text x="30" y="92" font-size="12" class="dim">顶层</text>
+        <path d="M 680 300 L 680 40" stroke-width="2" marker-end="url(#arrowO)" class="link-orange"/>
+        <defs><marker id="arrowO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="accent-orange-fill"/></marker></defs>
+        <text x="694" y="170" font-size="12" transform="rotate(90 694 170)" class="dim">覆盖方向：上层覆盖下层</text>
       </g>
     </svg>
     <figcaption>图 3：<code>dsh web</code> 的叠加过程——上层 patch 可整行替换下层配置</figcaption>

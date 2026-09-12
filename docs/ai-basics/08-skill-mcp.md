@@ -26,31 +26,31 @@ Function Calling 是各家 API 的私有格式，M 工具接到 A 框架要写�
   <figure class="figure">
     <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
-        <rect x="30" y="100" width="180" height="100" rx="12" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="120" y="130" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">MCP Host</text>
-        <text x="120" y="152" text-anchor="middle" class="svg-dim">Agent 应用本体</text>
-        <text x="120" y="170" text-anchor="middle" class="svg-dim">（Claude / Cursor / dsh…）</text>
-        <text x="120" y="188" text-anchor="middle" class="svg-dim">内置 MCP Client</text>
-        <rect x="290" y="100" width="140" height="100" rx="12" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-        <text x="360" y="130" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">MCP 协议</text>
-        <text x="360" y="152" text-anchor="middle" class="svg-dim">标准消息格式</text>
-        <text x="360" y="170" text-anchor="middle" class="svg-dim">stdio / HTTP 传输</text>
-        <rect x="510" y="30" width="180" height="52" rx="10" fill="#161b22" stroke="#3fb950"/>
-        <text x="600" y="52" text-anchor="middle" class="svg-text">Server：GitHub</text>
-        <text x="600" y="70" text-anchor="middle" class="svg-dim" font-size="11">读仓库 / 提 PR</text>
-        <rect x="510" y="124" width="180" height="52" rx="10" fill="#161b22" stroke="#3fb950"/>
-        <text x="600" y="146" text-anchor="middle" class="svg-text">Server：数据库</text>
-        <text x="600" y="164" text-anchor="middle" class="svg-dim" font-size="11">查 SQL / 建表</text>
-        <rect x="510" y="218" width="180" height="52" rx="10" fill="#161b22" stroke="#3fb950"/>
-        <text x="600" y="240" text-anchor="middle" class="svg-text">Server：浏览器</text>
-        <text x="600" y="258" text-anchor="middle" class="svg-dim" font-size="11">截图 / 操作页面</text>
-        <g stroke="#f0883e" stroke-width="1.8" fill="none">
+        <rect x="30" y="100" width="180" height="100" rx="12" stroke-width="2" class="cell-em link"/>
+        <text x="120" y="130" text-anchor="middle" font-weight="bold" font-size="14">MCP Host</text>
+        <text x="120" y="152" text-anchor="middle" class="dim">Agent 应用本体</text>
+        <text x="120" y="170" text-anchor="middle" class="dim">（Claude / Cursor / dsh…）</text>
+        <text x="120" y="188" text-anchor="middle" class="dim">内置 MCP Client</text>
+        <rect x="290" y="100" width="140" height="100" rx="12" stroke-width="2" class="cell link-orange"/>
+        <text x="360" y="130" text-anchor="middle" font-weight="bold" font-size="14">MCP 协议</text>
+        <text x="360" y="152" text-anchor="middle" class="dim">标准消息格式</text>
+        <text x="360" y="170" text-anchor="middle" class="dim">stdio / HTTP 传输</text>
+        <rect x="510" y="30" width="180" height="52" rx="10" class="cell link-green"/>
+        <text x="600" y="52" text-anchor="middle">Server：GitHub</text>
+        <text x="600" y="70" text-anchor="middle" font-size="11" class="dim">读仓库 / 提 PR</text>
+        <rect x="510" y="124" width="180" height="52" rx="10" class="cell link-green"/>
+        <text x="600" y="146" text-anchor="middle">Server：数据库</text>
+        <text x="600" y="164" text-anchor="middle" font-size="11" class="dim">查 SQL / 建表</text>
+        <rect x="510" y="218" width="180" height="52" rx="10" class="cell link-green"/>
+        <text x="600" y="240" text-anchor="middle">Server：浏览器</text>
+        <text x="600" y="258" text-anchor="middle" font-size="11" class="dim">截图 / 操作页面</text>
+        <g stroke-width="1.8" class="link-orange">
           <line x1="210" y1="140" x2="288" y2="140"/>
           <path d="M 430 140 C 470 140 470 56 508 56"/>
           <line x1="430" y1="150" x2="508" y2="150"/>
           <path d="M 430 160 C 470 160 470 244 508 244"/>
         </g>
-        <text x="360" y="290" text-anchor="middle" class="svg-dim">工具方实现一次 MCP Server，所有支持 MCP 的 Agent 即插即用</text>
+        <text x="360" y="290" text-anchor="middle" class="dim">工具方实现一次 MCP Server，所有支持 MCP 的 Agent 即插即用</text>
       </g>
     </svg>
     <figcaption>图 8：MCP 架构——Host（Agent）经协议连接任意数量的 Server（工具方）</figcaption>

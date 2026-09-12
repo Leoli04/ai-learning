@@ -25,34 +25,34 @@ Harness 就是把这些东西全部装好，交付给你一辆"能开的车"。
   <figure class="figure">
     <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
       <!-- 用户 -->
-      <rect x="20" y="110" width="130" height="70" rx="12" fill="#161b22" stroke="#30363d"/>
-      <text x="85" y="140" text-anchor="middle" class="svg-text" font-size="16">你（用户）</text>
-      <text x="85" y="162" text-anchor="middle" class="svg-dim" font-size="12">提需求、做审批</text>
-      <line x1="150" y1="145" x2="210" y2="145" stroke="#5b8cff" stroke-width="2"/>
+      <rect x="20" y="110" width="130" height="70" rx="12" class="cell"/>
+      <text x="85" y="140" text-anchor="middle" font-size="16">你（用户）</text>
+      <text x="85" y="162" text-anchor="middle" font-size="12" class="dim">提需求、做审批</text>
+      <line x1="150" y1="145" x2="210" y2="145" stroke-width="2" class="link"/>
       <polygon points="210,145 200,140 200,150" fill="#5b8cff"/>
       <!-- Harness 大框 -->
-      <rect x="215" y="40" width="290" height="220" rx="14" fill="rgba(91,140,255,0.08)" stroke="#5b8cff" stroke-width="2"/>
-      <text x="360" y="68" text-anchor="middle" class="svg-text" font-size="17" font-weight="bold">Harness（dsh）</text>
-      <rect x="235" y="85" width="250" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
-      <text x="360" y="108" text-anchor="middle" class="svg-text" font-size="13">会话管理 · 记住每一步</text>
-      <rect x="235" y="130" width="250" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
-      <text x="360" y="153" text-anchor="middle" class="svg-text" font-size="13">工具调用 · 读文件/跑命令</text>
-      <rect x="235" y="175" width="250" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
-      <text x="360" y="198" text-anchor="middle" class="svg-text" font-size="13">权限审批 · 沙箱隔离</text>
-      <text x="360" y="240" text-anchor="middle" class="svg-dim" font-size="12">Agent 循环：想 → 做工具调用 → 看 → 再想</text>
-      <line x1="505" y1="145" x2="565" y2="145" stroke="#5b8cff" stroke-width="2"/>
+      <rect x="215" y="40" width="290" height="220" rx="14" stroke-width="2" class="cell-em link"/>
+      <text x="360" y="68" text-anchor="middle" font-size="17" font-weight="bold">Harness（dsh）</text>
+      <rect x="235" y="85" width="250" height="36" rx="8" class="cell"/>
+      <text x="360" y="108" text-anchor="middle" font-size="13">会话管理 · 记住每一步</text>
+      <rect x="235" y="130" width="250" height="36" rx="8" class="cell"/>
+      <text x="360" y="153" text-anchor="middle" font-size="13">工具调用 · 读文件/跑命令</text>
+      <rect x="235" y="175" width="250" height="36" rx="8" class="cell"/>
+      <text x="360" y="198" text-anchor="middle" font-size="13">权限审批 · 沙箱隔离</text>
+      <text x="360" y="240" text-anchor="middle" font-size="12" class="dim">Agent 循环：想 → 做工具调用 → 看 → 再想</text>
+      <line x1="505" y1="145" x2="565" y2="145" stroke-width="2" class="link"/>
       <polygon points="565,145 555,140 555,150" fill="#5b8cff"/>
       <!-- LLM -->
-      <rect x="570" y="110" width="130" height="70" rx="12" fill="#161b22" stroke="#bc8cff"/>
-      <text x="635" y="140" text-anchor="middle" class="svg-text" font-size="16">LLM</text>
-      <text x="635" y="162" text-anchor="middle" class="svg-dim" font-size="12">"大脑"：只负责推理</text>
+      <rect x="570" y="110" width="130" height="70" rx="12" class="cell link-purple"/>
+      <text x="635" y="140" text-anchor="middle" font-size="16">LLM</text>
+      <text x="635" y="162" text-anchor="middle" font-size="12" class="dim">"大脑"：只负责推理</text>
       <!-- 底部工具 -->
-      <rect x="235" y="270" width="70" height="24" rx="6" fill="#161b22" stroke="#3fb950"/>
-      <text x="270" y="286" text-anchor="middle" class="svg-text" font-size="11">文件系统</text>
-      <rect x="315" y="270" width="70" height="24" rx="6" fill="#161b22" stroke="#3fb950"/>
-      <text x="350" y="286" text-anchor="middle" class="svg-text" font-size="11">终端</text>
-      <rect x="395" y="270" width="70" height="24" rx="6" fill="#161b22" stroke="#3fb950"/>
-      <text x="430" y="286" text-anchor="middle" class="svg-text" font-size="11">浏览器</text>
+      <rect x="235" y="270" width="70" height="24" rx="6" class="cell link-green"/>
+      <text x="270" y="286" text-anchor="middle" font-size="11">文件系统</text>
+      <rect x="315" y="270" width="70" height="24" rx="6" class="cell link-green"/>
+      <text x="350" y="286" text-anchor="middle" font-size="11">终端</text>
+      <rect x="395" y="270" width="70" height="24" rx="6" class="cell link-green"/>
+      <text x="430" y="286" text-anchor="middle" font-size="11">浏览器</text>
     </svg>
     <figcaption>图 1：LLM 是发动机，Harness 是整台车——负责干活、管状态、保安全</figcaption>
   </figure>

@@ -18,26 +18,26 @@ title: 推理优化与部署：让模型跑得快、装得下、花得少
   <figure class="figure">
     <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
-        <rect x="30" y="30" width="210" height="120" rx="10" fill="#161b22" stroke="#30363d"/>
-        <text x="135" y="56" text-anchor="middle" class="svg-text" font-weight="bold">KV Cache</text>
-        <text x="135" y="78" text-anchor="middle" class="svg-dim">把算过的注意力中间结果缓存</text>
-        <text x="135" y="98" text-anchor="middle" class="svg-dim">新 token 只算增量</text>
-        <text x="135" y="120" text-anchor="middle" class="svg-dim" font-size="11">代价：长上下文的显存大户</text>
-        <rect x="255" y="30" width="210" height="120" rx="10" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="360" y="56" text-anchor="middle" class="svg-text" font-weight="bold">量化 Quantization</text>
-        <text x="360" y="78" text-anchor="middle" class="svg-dim">FP16 → INT8 / INT4</text>
-        <text x="360" y="98" text-anchor="middle" class="svg-dim">显存 ÷2 再 ÷2，损失极小</text>
-        <text x="360" y="120" text-anchor="middle" class="svg-dim" font-size="11">GGUF(AWQ/GPTQ) 本地部署标配</text>
-        <rect x="480" y="30" width="210" height="120" rx="10" fill="#161b22" stroke="#30363d"/>
-        <text x="585" y="56" text-anchor="middle" class="svg-text" font-weight="bold">投机解码</text>
-        <text x="585" y="78" text-anchor="middle" class="svg-dim">小模型先猜一串</text>
-        <text x="585" y="98" text-anchor="middle" class="svg-dim">大模型一次验收多个</text>
-        <text x="585" y="120" text-anchor="middle" class="svg-dim" font-size="11">结果不变，速度 ×2~3</text>
-        <rect x="140" y="185" width="440" height="110" rx="12" fill="rgba(63,185,80,0.08)" stroke="#3fb950" stroke-width="2"/>
-        <text x="360" y="212" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">vLLM / PagedAttention（2023，吞吐革命）</text>
-        <text x="360" y="238" text-anchor="middle" class="svg-dim">把 KV Cache 像内存分页一样管理，碎片几乎为零</text>
-        <text x="360" y="260" text-anchor="middle" class="svg-dim">+ Continuous Batching：新请求随时插队进批次</text>
-        <text x="360" y="282" text-anchor="middle" class="svg-dim">同卡吞吐提升数倍~数十倍，自托管服务的事实标准</text>
+        <rect x="30" y="30" width="210" height="120" rx="10" class="cell"/>
+        <text x="135" y="56" text-anchor="middle" font-weight="bold">KV Cache</text>
+        <text x="135" y="78" text-anchor="middle" class="dim">把算过的注意力中间结果缓存</text>
+        <text x="135" y="98" text-anchor="middle" class="dim">新 token 只算增量</text>
+        <text x="135" y="120" text-anchor="middle" font-size="11" class="dim">代价：长上下文的显存大户</text>
+        <rect x="255" y="30" width="210" height="120" rx="10" stroke-width="2" class="cell-em link"/>
+        <text x="360" y="56" text-anchor="middle" font-weight="bold">量化 Quantization</text>
+        <text x="360" y="78" text-anchor="middle" class="dim">FP16 → INT8 / INT4</text>
+        <text x="360" y="98" text-anchor="middle" class="dim">显存 ÷2 再 ÷2，损失极小</text>
+        <text x="360" y="120" text-anchor="middle" font-size="11" class="dim">GGUF(AWQ/GPTQ) 本地部署标配</text>
+        <rect x="480" y="30" width="210" height="120" rx="10" class="cell"/>
+        <text x="585" y="56" text-anchor="middle" font-weight="bold">投机解码</text>
+        <text x="585" y="78" text-anchor="middle" class="dim">小模型先猜一串</text>
+        <text x="585" y="98" text-anchor="middle" class="dim">大模型一次验收多个</text>
+        <text x="585" y="120" text-anchor="middle" font-size="11" class="dim">结果不变，速度 ×2~3</text>
+        <rect x="140" y="185" width="440" height="110" rx="12" stroke-width="2" class="cell-em link-green"/>
+        <text x="360" y="212" text-anchor="middle" font-weight="bold" font-size="14">vLLM / PagedAttention（2023，吞吐革命）</text>
+        <text x="360" y="238" text-anchor="middle" class="dim">把 KV Cache 像内存分页一样管理，碎片几乎为零</text>
+        <text x="360" y="260" text-anchor="middle" class="dim">+ Continuous Batching：新请求随时插队进批次</text>
+        <text x="360" y="282" text-anchor="middle" class="dim">同卡吞吐提升数倍~数十倍，自托管服务的事实标准</text>
       </g>
     </svg>
     <figcaption>图 10：推理优化四件套——KV Cache、量化、投机解码、vLLM 服务化</figcaption>

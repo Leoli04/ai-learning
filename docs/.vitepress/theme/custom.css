@@ -1,4 +1,4 @@
-/* ai-learning 品牌色定制：沿用原暗色主题的蓝 */
+/* ---------- 品牌色 ---------- */
 :root {
   --vp-c-brand-1: #5b8cff;
   --vp-c-brand-2: #7aa2ff;
@@ -6,9 +6,43 @@
   --vp-c-brand-soft: rgba(91, 140, 255, 0.14);
 }
 
-/* 文章内 SVG 图解容器样式（继承原手绘图风格） */
+/* ---------- 双主题配色（让卡片浮在容器之上） ---------- */
+:root {
+  --fig-bg:     #eef0f2;   /* figure 容器底（比卡片暗） */
+  --cell-bg:    #ffffff;   /* 普通卡片（白） */
+  --cell-border:#d0d7de;
+  --cell-bg-em: #eaf0ff;   /* 强调卡（浅蓝） */
+  --cell-em-bd: #9bbcff;
+  --text-main:  #1f2328;
+  --text-dim:   #57606a;
+  --text-faint: #8c959f;
+  --acc-blue:   #0969da;
+  --acc-green:  #1a7f37;
+  --acc-orange: #bc4c00;
+  --acc-purple: #8250df;
+  --acc-red:    #cf222e;
+  --acc-cyan:   #1b7c83;
+}
+html.dark {
+  --fig-bg:     #0d1117;
+  --cell-bg:    #1c2128;   /* 比 figure 容器亮一档 */
+  --cell-border:#3a424c;
+  --cell-bg-em: rgba(91, 140, 255, 0.16);
+  --cell-em-bd: #5b8cff;
+  --text-main:  #e6edf3;
+  --text-dim:   #8d96a0;
+  --text-faint: #6e7681;
+  --acc-blue:   #58a6ff;
+  --acc-green:  #3fb950;
+  --acc-orange: #f0883e;
+  --acc-purple: #bc8cff;
+  --acc-red:    #ff7b72;
+  --acc-cyan:   #39c5cf;
+}
+
+/* ---------- figure 容器（包裹每个 SVG 图） ---------- */
 .vp-doc .figure {
-  background: var(--vp-c-bg-soft);
+  background: var(--fig-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   padding: 18px 14px 8px;
@@ -20,6 +54,50 @@
   color: var(--vp-c-text-2);
   font-size: 13px;
   padding: 8px 0 6px;
+  font-family: ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-/* 暗色模式下 SVG 文字颜色跟随（原 HTML 用固定 class 着色，已内联填充，无需处理） */
+/* ---------- SVG 类（亮/暗主题自适应） ---------- */
+.vp-doc .figure svg .cell            { fill: var(--cell-bg);    stroke: var(--cell-border); }
+.vp-doc .figure svg .cell-em         { fill: var(--cell-bg-em); stroke: var(--cell-em-bd); stroke-width: 2; }
+.vp-doc .figure svg .cell-stroke     { fill: none;              stroke: var(--cell-border); }
+.vp-doc .figure svg .cell-em-stroke  { fill: none;              stroke: var(--cell-em-bd); }
+
+/* 中心圆复合类（cell-em + link 共享时强制填充） */
+.vp-doc .figure svg .cell-em.link        { fill: var(--cell-bg-em); stroke: var(--acc-blue); }
+.vp-doc .figure svg .cell-em.link-green  { fill: var(--cell-bg-em); stroke: var(--acc-green); }
+.vp-doc .figure svg .cell-em.link-purple { fill: var(--cell-bg-em); stroke: var(--acc-purple); }
+
+/* 文字 */
+.vp-doc .figure svg text {
+  fill: var(--text-main);
+  font-family: ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.vp-doc .figure svg text.dim    { fill: var(--text-dim);  }
+.vp-doc .figure svg text.faint  { fill: var(--text-faint); }
+.vp-doc .figure svg text.accent-blue   { fill: var(--acc-blue); }
+.vp-doc .figure svg text.accent-green  { fill: var(--acc-green); }
+.vp-doc .figure svg text.accent-orange { fill: var(--acc-orange); }
+.vp-doc .figure svg text.accent-purple { fill: var(--acc-purple); }
+.vp-doc .figure svg text.accent-red    { fill: var(--acc-red); }
+.vp-doc .figure svg text.em     { font-weight: 700; }
+
+/* 连线（仅描边） */
+.vp-doc .figure svg .link        { stroke: var(--acc-blue);  }
+.vp-doc .figure svg .link-green  { stroke: var(--acc-green); }
+.vp-doc .figure svg .link-orange { stroke: var(--acc-orange); }
+.vp-doc .figure svg .link-purple { stroke: var(--acc-purple); }
+.vp-doc .figure svg .link-dim    { stroke: var(--text-faint); }
+
+/* 强调色填充 / 描边（独立填/描） */
+.vp-doc .figure svg .accent-blue-fill    { fill: var(--acc-blue); }
+.vp-doc .figure svg .accent-green-fill   { fill: var(--acc-green); }
+.vp-doc .figure svg .accent-orange-fill  { fill: var(--acc-orange); }
+.vp-doc .figure svg .accent-purple-fill  { fill: var(--acc-purple); }
+.vp-doc .figure svg .accent-red-fill     { fill: var(--acc-red); }
+
+.vp-doc .figure svg .accent-blue-stroke   { stroke: var(--acc-blue); }
+.vp-doc .figure svg .accent-green-stroke  { stroke: var(--acc-green); }
+.vp-doc .figure svg .accent-orange-stroke { stroke: var(--acc-orange); }
+.vp-doc .figure svg .accent-purple-stroke { stroke: var(--acc-purple); }
+.vp-doc .figure svg .accent-red-stroke    { stroke: var(--acc-red); }

@@ -24,20 +24,20 @@ title: 多模态与推理模型：能看图，会"先想后答"
     <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
         <!-- 普通模型 -->
-        <rect x="40" y="40" width="300" height="90" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="190" y="66" text-anchor="middle" class="svg-text" font-weight="bold">普通模式</text>
-        <text x="190" y="90" text-anchor="middle" class="svg-dim">问题 → 直接生成答案</text>
-        <text x="190" y="112" text-anchor="middle" class="svg-dim" font-size="11">快、便宜；难题正确率有天花板</text>
+        <rect x="40" y="40" width="300" height="90" rx="12" class="cell"/>
+        <text x="190" y="66" text-anchor="middle" font-weight="bold">普通模式</text>
+        <text x="190" y="90" text-anchor="middle" class="dim">问题 → 直接生成答案</text>
+        <text x="190" y="112" text-anchor="middle" font-size="11" class="dim">快、便宜；难题正确率有天花板</text>
         <!-- 推理模型 -->
-        <rect x="380" y="40" width="300" height="90" rx="12" fill="rgba(188,140,255,0.10)" stroke="#bc8cff" stroke-width="2"/>
-        <text x="530" y="66" text-anchor="middle" class="svg-text" font-weight="bold">推理模式（思考）</text>
-        <text x="530" y="90" text-anchor="middle" class="svg-dim">问题 → 长思考链 → 答案</text>
-        <text x="530" y="112" text-anchor="middle" class="svg-dim" font-size="11">慢 5~50 倍、贵数倍；难题正确率大涨</text>
+        <rect x="380" y="40" width="300" height="90" rx="12" stroke-width="2" class="cell-em link-purple"/>
+        <text x="530" y="66" text-anchor="middle" font-weight="bold">推理模式（思考）</text>
+        <text x="530" y="90" text-anchor="middle" class="dim">问题 → 长思考链 → 答案</text>
+        <text x="530" y="112" text-anchor="middle" font-size="11" class="dim">慢 5~50 倍、贵数倍；难题正确率大涨</text>
         <!-- 关键洞察 -->
-        <rect x="40" y="160" width="640" height="90" rx="12" fill="rgba(240,136,62,0.08)" stroke="#f0883e" stroke-width="2"/>
-        <text x="360" y="188" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">关键洞察：Test-time Compute 缩放</text>
-        <text x="360" y="214" text-anchor="middle" class="svg-dim">性能不只随训练算力增长（Scaling Laws），也随"推理时多想"而增长</text>
-        <text x="360" y="236" text-anchor="middle" class="svg-dim">于是出现了新旋钮：难题多给思考 token，简单题秒答——按题分配"脑力预算"</text>
+        <rect x="40" y="160" width="640" height="90" rx="12" stroke-width="2" class="cell-em link-orange"/>
+        <text x="360" y="188" text-anchor="middle" font-weight="bold" font-size="14">关键洞察：Test-time Compute 缩放</text>
+        <text x="360" y="214" text-anchor="middle" class="dim">性能不只随训练算力增长（Scaling Laws），也随"推理时多想"而增长</text>
+        <text x="360" y="236" text-anchor="middle" class="dim">于是出现了新旋钮：难题多给思考 token，简单题秒答——按题分配"脑力预算"</text>
       </g>
     </svg>
     <figcaption>图 11：普通模式 vs 推理模式——新旋钮"思考预算"按题分配</figcaption>

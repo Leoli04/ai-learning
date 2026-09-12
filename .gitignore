@@ -1,7 +1,12 @@
 node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+docs/.vitepress/config.mjs.timestamp-*
+.dev.log
+.playwright-cli/
+# 旧临时文件（迁移期产物）
 _v.txt
 _convert.py
 _r*.txt
 _check.txt
+_w*.txt

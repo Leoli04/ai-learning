@@ -23,23 +23,23 @@ title: 事件三域与 Turn 执行流：一次任务是怎么跑完的
 
   <figure class="figure">
     <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b8cff"/></marker></defs>
+      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="accent-blue-fill"/></marker></defs>
       <g font-size="13">
-        <rect x="90" y="20" width="540" height="40" rx="9" fill="#161b22" stroke="#5b8cff"/>
-        <text x="360" y="45" text-anchor="middle" class="svg-text">turn/start → 认领输入（单收件箱）</text>
-        <rect x="90" y="80" width="540" height="40" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="360" y="105" text-anchor="middle" class="svg-text">组装 prompt 区块 + 工具 schema → agent/pre-step 闸门</text>
-        <rect x="90" y="140" width="540" height="40" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="360" y="165" text-anchor="middle" class="svg-text">step/start → agent/request → 发出不可变模型请求</text>
-        <rect x="90" y="200" width="540" height="40" rx="9" fill="#161b22" stroke="#bc8cff"/>
-        <text x="360" y="225" text-anchor="middle" class="svg-text">流式返回：llm/stream → agent/assistant-stream</text>
-        <rect x="90" y="260" width="540" height="40" rx="9" fill="#161b22" stroke="#3fb950"/>
-        <text x="360" y="285" text-anchor="middle" class="svg-text">tool/call → tools/pre-execute → execute → post-execute → result</text>
-        <rect x="90" y="320" width="540" height="40" rx="9" fill="#161b22" stroke="#f0883e"/>
-        <text x="360" y="345" text-anchor="middle" class="svg-text">step/end → 还要继续？认领输入进入下一步</text>
-        <rect x="190" y="376" width="340" height="34" rx="9" fill="rgba(240,136,62,0.10)" stroke="#f0883e"/>
-        <text x="360" y="398" text-anchor="middle" class="svg-text">agent/turn-stopping → turn/end</text>
-        <g stroke="#5b8cff" stroke-width="1.8" fill="none" marker-end="url(#a)">
+        <rect x="90" y="20" width="540" height="40" rx="9" class="cell link"/>
+        <text x="360" y="45" text-anchor="middle">turn/start → 认领输入（单收件箱）</text>
+        <rect x="90" y="80" width="540" height="40" rx="9" class="cell"/>
+        <text x="360" y="105" text-anchor="middle">组装 prompt 区块 + 工具 schema → agent/pre-step 闸门</text>
+        <rect x="90" y="140" width="540" height="40" rx="9" class="cell"/>
+        <text x="360" y="165" text-anchor="middle">step/start → agent/request → 发出不可变模型请求</text>
+        <rect x="90" y="200" width="540" height="40" rx="9" class="cell link-purple"/>
+        <text x="360" y="225" text-anchor="middle">流式返回：llm/stream → agent/assistant-stream</text>
+        <rect x="90" y="260" width="540" height="40" rx="9" class="cell link-green"/>
+        <text x="360" y="285" text-anchor="middle">tool/call → tools/pre-execute → execute → post-execute → result</text>
+        <rect x="90" y="320" width="540" height="40" rx="9" class="cell link-orange"/>
+        <text x="360" y="345" text-anchor="middle">step/end → 还要继续？认领输入进入下一步</text>
+        <rect x="190" y="376" width="340" height="34" rx="9" class="cell-em link-orange"/>
+        <text x="360" y="398" text-anchor="middle">agent/turn-stopping → turn/end</text>
+        <g stroke-width="1.8" marker-end="url(#a)" class="link">
           <line x1="360" y1="60" x2="360" y2="78"/>
           <line x1="360" y1="120" x2="360" y2="138"/>
           <line x1="360" y1="180" x2="360" y2="198"/>
@@ -48,7 +48,7 @@ title: 事件三域与 Turn 执行流：一次任务是怎么跑完的
           <line x1="360" y1="360" x2="360" y2="374"/>
           <path d="M 630 340 C 690 340 690 100 632 100" marker-end="url(#a)"/>
         </g>
-        <text x="706" y="225" text-anchor="middle" class="svg-dim" font-size="11" transform="rotate(90 706 225)">循环：继续 Step</text>
+        <text x="706" y="225" text-anchor="middle" font-size="11" transform="rotate(90 706 225)" class="dim">循环：继续 Step</text>
       </g>
     </svg>
     <figcaption>图 5：一个 Turn 的完整流水线——Step 循环直到无需更多请求</figcaption>

@@ -20,34 +20,34 @@ title: Agent 核心范式：ReAct、规划、反思与多智能体
     <svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
         <!-- ReAct -->
-        <rect x="30" y="30" width="330" height="150" rx="12" fill="rgba(188,140,255,0.08)" stroke="#bc8cff" stroke-width="2"/>
-        <text x="195" y="54" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">ReAct（2022）· 鼻祖范式</text>
-        <text x="195" y="76" text-anchor="middle" class="svg-dim">想 → 动 → 看，边干边决定下一步</text>
-        <text x="195" y="98" text-anchor="middle" class="svg-dim">✅ 简单通用，仍是绝大多数框架的默认</text>
-        <text x="195" y="120" text-anchor="middle" class="svg-dim">⚠️ 走一步看一步：容易绕路、死循环</text>
-        <text x="195" y="150" text-anchor="middle" class="svg-text" font-size="11">思考(Reason) → 行动(Act) → 观察(Observe) 循环</text>
+        <rect x="30" y="30" width="330" height="150" rx="12" stroke-width="2" class="cell-em link-purple"/>
+        <text x="195" y="54" text-anchor="middle" font-weight="bold" font-size="14">ReAct（2022）· 鼻祖范式</text>
+        <text x="195" y="76" text-anchor="middle" class="dim">想 → 动 → 看，边干边决定下一步</text>
+        <text x="195" y="98" text-anchor="middle" class="dim">✅ 简单通用，仍是绝大多数框架的默认</text>
+        <text x="195" y="120" text-anchor="middle" class="dim">⚠️ 走一步看一步：容易绕路、死循环</text>
+        <text x="195" y="150" text-anchor="middle" font-size="11">思考(Reason) → 行动(Act) → 观察(Observe) 循环</text>
         <!-- Plan-and-Execute -->
-        <rect x="390" y="30" width="300" height="150" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="540" y="54" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">Plan-and-Execute · 先规划后执行</text>
-        <text x="540" y="76" text-anchor="middle" class="svg-dim">先让模型列出完整步骤清单</text>
-        <text x="540" y="98" text-anchor="middle" class="svg-dim">再逐步执行，失败才重新规划</text>
-        <text x="540" y="120" text-anchor="middle" class="svg-dim">✅ 长任务更稳、更省 token</text>
-        <text x="540" y="142" text-anchor="middle" class="svg-dim">⚠️ 计划赶不上变化时需重规划</text>
+        <rect x="390" y="30" width="300" height="150" rx="12" class="cell"/>
+        <text x="540" y="54" text-anchor="middle" font-weight="bold" font-size="14">Plan-and-Execute · 先规划后执行</text>
+        <text x="540" y="76" text-anchor="middle" class="dim">先让模型列出完整步骤清单</text>
+        <text x="540" y="98" text-anchor="middle" class="dim">再逐步执行，失败才重新规划</text>
+        <text x="540" y="120" text-anchor="middle" class="dim">✅ 长任务更稳、更省 token</text>
+        <text x="540" y="142" text-anchor="middle" class="dim">⚠️ 计划赶不上变化时需重规划</text>
         <!-- Reflection -->
-        <rect x="30" y="210" width="330" height="150" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="195" y="234" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">Reflexion · 自我复盘</text>
-        <text x="195" y="256" text-anchor="middle" class="svg-dim">执行后让模型自查："哪步错了？为什么？"</text>
-        <text x="195" y="278" text-anchor="middle" class="svg-dim">把教训写进记忆，下一轮改进</text>
-        <text x="195" y="300" text-anchor="middle" class="svg-dim">✅ 显著提升复杂任务成功率</text>
-        <text x="195" y="322" text-anchor="middle" class="svg-dim">⚠️ 多一轮 LLM 调用，更慢更贵</text>
+        <rect x="30" y="210" width="330" height="150" rx="12" class="cell"/>
+        <text x="195" y="234" text-anchor="middle" font-weight="bold" font-size="14">Reflexion · 自我复盘</text>
+        <text x="195" y="256" text-anchor="middle" class="dim">执行后让模型自查："哪步错了？为什么？"</text>
+        <text x="195" y="278" text-anchor="middle" class="dim">把教训写进记忆，下一轮改进</text>
+        <text x="195" y="300" text-anchor="middle" class="dim">✅ 显著提升复杂任务成功率</text>
+        <text x="195" y="322" text-anchor="middle" class="dim">⚠️ 多一轮 LLM 调用，更慢更贵</text>
         <!-- Multi-Agent -->
-        <rect x="390" y="210" width="300" height="150" rx="12" fill="rgba(91,140,255,0.08)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="540" y="234" text-anchor="middle" class="svg-text" font-weight="bold" font-size="14">Multi-Agent · 多智能体协作</text>
-        <text x="540" y="256" text-anchor="middle" class="svg-dim">编排者(Orchestrator)拆任务派活</text>
-        <text x="540" y="278" text-anchor="middle" class="svg-dim">执行者(Subagent)各干一摊，上下文隔离</text>
-        <text x="540" y="300" text-anchor="middle" class="svg-dim">✅ 擅长大型、可并行的任务</text>
-        <text x="540" y="322" text-anchor="middle" class="svg-dim">⚠️ 通信成本高，调试复杂</text>
-        <text x="360" y="400" text-anchor="middle" class="svg-dim">四者不互斥：现代 Agent 常是 ReAct 打底 + 计划 + 复盘 + 子智能体按需启用</text>
+        <rect x="390" y="210" width="300" height="150" rx="12" stroke-width="2" class="cell-em link"/>
+        <text x="540" y="234" text-anchor="middle" font-weight="bold" font-size="14">Multi-Agent · 多智能体协作</text>
+        <text x="540" y="256" text-anchor="middle" class="dim">编排者(Orchestrator)拆任务派活</text>
+        <text x="540" y="278" text-anchor="middle" class="dim">执行者(Subagent)各干一摊，上下文隔离</text>
+        <text x="540" y="300" text-anchor="middle" class="dim">✅ 擅长大型、可并行的任务</text>
+        <text x="540" y="322" text-anchor="middle" class="dim">⚠️ 通信成本高，调试复杂</text>
+        <text x="360" y="400" text-anchor="middle" class="dim">四者不互斥：现代 Agent 常是 ReAct 打底 + 计划 + 复盘 + 子智能体按需启用</text>
       </g>
     </svg>
     <figcaption>图 6：Agent 四大范式——从单循环到团队协作</figcaption>

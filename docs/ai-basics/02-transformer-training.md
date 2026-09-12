@@ -18,33 +18,33 @@ title: Transformer 与训练三部曲：大模型是怎么炼成的
     <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
       <g font-size="13">
         <!-- 输入 -->
-        <rect x="60" y="30" width="600" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
-        <text x="360" y="53" text-anchor="middle" class="svg-text" font-size="12">输入 token 序列：今天 · 天气 · 真 · __</text>
+        <rect x="60" y="30" width="600" height="36" rx="8" class="cell"/>
+        <text x="360" y="53" text-anchor="middle" font-size="12">输入 token 序列：今天 · 天气 · 真 · __</text>
         <!-- Transformer 块堆叠 -->
-        <rect x="200" y="86" width="320" height="34" rx="8" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="360" y="108" text-anchor="middle" class="svg-text" font-size="12">Transformer 层 × N（几十~上百层）</text>
-        <rect x="200" y="128" width="320" height="34" rx="8" fill="#161b22" stroke="#30363d"/>
-        <text x="360" y="150" text-anchor="middle" class="svg-dim" font-size="11">每层 = 自注意力 + 前馈网络</text>
+        <rect x="200" y="86" width="320" height="34" rx="8" stroke-width="2" class="cell-em link"/>
+        <text x="360" y="108" text-anchor="middle" font-size="12">Transformer 层 × N（几十~上百层）</text>
+        <rect x="200" y="128" width="320" height="34" rx="8" class="cell"/>
+        <text x="360" y="150" text-anchor="middle" font-size="11" class="dim">每层 = 自注意力 + 前馈网络</text>
         <!-- 输出分布 -->
-        <rect x="200" y="182" width="320" height="34" rx="8" fill="rgba(188,140,255,0.10)" stroke="#bc8cff" stroke-width="2"/>
-        <text x="360" y="204" text-anchor="middle" class="svg-text" font-size="12">下一个 token 的概率分布</text>
-        <g font-size="11" class="svg-dim">
+        <rect x="200" y="182" width="320" height="34" rx="8" stroke-width="2" class="cell-em link-purple"/>
+        <text x="360" y="204" text-anchor="middle" font-size="12">下一个 token 的概率分布</text>
+        <g font-size="11" class="dim">
           <text x="250" y="238">好 32%</text><text x="360" y="238">不错 24%</text><text x="470" y="238">糟 18% …</text>
         </g>
-        <line x1="360" y1="66" x2="360" y2="84" stroke="#5b8cff" stroke-width="1.8"/>
-        <line x1="360" y1="120" x2="360" y2="126" stroke="#5b8cff" stroke-width="1.8"/>
-        <line x1="360" y1="162" x2="360" y2="180" stroke="#5b8cff" stroke-width="1.8"/>
-        <line x1="360" y1="216" x2="360" y2="230" stroke="#5b8cff" stroke-width="1.8"/>
+        <line x1="360" y1="66" x2="360" y2="84" stroke-width="1.8" class="link"/>
+        <line x1="360" y1="120" x2="360" y2="126" stroke-width="1.8" class="link"/>
+        <line x1="360" y1="162" x2="360" y2="180" stroke-width="1.8" class="link"/>
+        <line x1="360" y1="216" x2="360" y2="230" stroke-width="1.8" class="link"/>
         <!-- 温度 -->
-        <text x="600" y="204" class="svg-dim" font-size="11">温度参数：</text>
-        <text x="600" y="220" class="svg-dim" font-size="11">低→稳定保守</text>
-        <text x="600" y="236" class="svg-dim" font-size="11">高→发散有创意</text>
+        <text x="600" y="204" font-size="11" class="dim">温度参数：</text>
+        <text x="600" y="220" font-size="11" class="dim">低→稳定保守</text>
+        <text x="600" y="236" font-size="11" class="dim">高→发散有创意</text>
         <!-- 接龙循环 -->
-        <rect x="200" y="262" width="320" height="40" rx="8" fill="rgba(63,185,80,0.08)" stroke="#3fb950"/>
-        <text x="360" y="287" text-anchor="middle" class="svg-text" font-size="12">选中一个 → 拼回输入 → 继续接龙</text>
-        <path d="M 200 282 C 140 282 140 103 198 103" stroke="#3fb950" stroke-width="1.8" fill="none"/>
-        <text x="90" y="200" class="svg-dim" font-size="11">循环直到</text>
-        <text x="90" y="216" class="svg-dim" font-size="11">生成结束</text>
+        <rect x="200" y="262" width="320" height="40" rx="8" class="cell-em link-green"/>
+        <text x="360" y="287" text-anchor="middle" font-size="12">选中一个 → 拼回输入 → 继续接龙</text>
+        <path d="M 200 282 C 140 282 140 103 198 103" stroke-width="1.8" class="link-green"/>
+        <text x="90" y="200" font-size="11" class="dim">循环直到</text>
+        <text x="90" y="216" font-size="11" class="dim">生成结束</text>
       </g>
     </svg>
     <figcaption>图 2a：LLM 的工作方式——切 token → 过 Transformer 层 → 预测下一个 token → 接龙</figcaption>

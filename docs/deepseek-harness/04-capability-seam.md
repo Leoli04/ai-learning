@@ -20,32 +20,32 @@ title: 能力接缝：为什么"换一个零件，改的是整个产品"
     <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
       <g font-size="14">
         <!-- 左：消费者们 -->
-        <rect x="40" y="50" width="180" height="44" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="130" y="78" text-anchor="middle" class="svg-text">tool: 读文件</text>
-        <rect x="40" y="120" width="180" height="44" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="130" y="148" text-anchor="middle" class="svg-text">tool: 跑终端命令</text>
-        <rect x="40" y="190" width="180" height="44" rx="9" fill="#161b22" stroke="#30363d"/>
-        <text x="130" y="218" text-anchor="middle" class="svg-text">tool: LSP 代码诊断</text>
+        <rect x="40" y="50" width="180" height="44" rx="9" class="cell"/>
+        <text x="130" y="78" text-anchor="middle">tool: 读文件</text>
+        <rect x="40" y="120" width="180" height="44" rx="9" class="cell"/>
+        <text x="130" y="148" text-anchor="middle">tool: 跑终端命令</text>
+        <rect x="40" y="190" width="180" height="44" rx="9" class="cell"/>
+        <text x="130" y="218" text-anchor="middle">tool: LSP 代码诊断</text>
         <!-- 中：接缝 -->
-        <rect x="270" y="105" width="180" height="80" rx="12" fill="rgba(188,140,255,0.10)" stroke="#bc8cff" stroke-width="2"/>
-        <text x="360" y="138" text-anchor="middle" class="svg-text" font-weight="bold">Seam：执行环境</text>
-        <text x="360" y="162" text-anchor="middle" class="svg-dim" font-size="12">统一接口声明</text>
+        <rect x="270" y="105" width="180" height="80" rx="12" stroke-width="2" class="cell-em link-purple"/>
+        <text x="360" y="138" text-anchor="middle" font-weight="bold">Seam：执行环境</text>
+        <text x="360" y="162" text-anchor="middle" font-size="12" class="dim">统一接口声明</text>
         <!-- 右：提供者 -->
-        <rect x="510" y="50" width="170" height="44" rx="9" fill="#161b22" stroke="#3fb950"/>
-        <text x="595" y="70" text-anchor="middle" class="svg-text">Provider A</text>
-        <text x="595" y="86" text-anchor="middle" class="svg-dim" font-size="11">本机 Filesystem</text>
-        <rect x="510" y="190" width="170" height="44" rx="9" fill="#161b22" stroke="#3fb950"/>
-        <text x="595" y="210" text-anchor="middle" class="svg-text">Provider B</text>
-        <text x="595" y="226" text-anchor="middle" class="svg-dim" font-size="11">远程 Sandbox</text>
+        <rect x="510" y="50" width="170" height="44" rx="9" class="cell link-green"/>
+        <text x="595" y="70" text-anchor="middle">Provider A</text>
+        <text x="595" y="86" text-anchor="middle" font-size="11" class="dim">本机 Filesystem</text>
+        <rect x="510" y="190" width="170" height="44" rx="9" class="cell link-green"/>
+        <text x="595" y="210" text-anchor="middle">Provider B</text>
+        <text x="595" y="226" text-anchor="middle" font-size="11" class="dim">远程 Sandbox</text>
         <!-- 连线 -->
-        <g stroke="#5b8cff" stroke-width="1.6" fill="none" opacity="0.75">
+        <g stroke-width="1.6" opacity="0.75" class="link">
           <line x1="220" y1="72" x2="270" y2="125"/>
           <line x1="220" y1="142" x2="270" y2="145"/>
           <line x1="220" y1="212" x2="270" y2="165"/>
           <line x1="450" y1="130" x2="510" y2="80"/>
           <line x1="450" y1="160" x2="510" y2="205"/>
         </g>
-        <text x="360" y="272" text-anchor="middle" class="svg-dim" font-size="12">换 Provider：把接缝指向远程 Sandbox，读文件/终端/LSP 全部跟着搬到云上</text>
+        <text x="360" y="272" text-anchor="middle" font-size="12" class="dim">换 Provider：把接缝指向远程 Sandbox，读文件/终端/LSP 全部跟着搬到云上</text>
       </g>
     </svg>
     <figcaption>图 4：消费者只认接缝不认人——换 Provider 即整体换能力</figcaption>

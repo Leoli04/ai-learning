@@ -32,21 +32,21 @@ title: 微调与对齐：Prompt 搞不定时，动模型的参数
   <figure class="figure">
     <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
       <g font-size="12">
-        <rect x="60" y="60" width="220" height="120" rx="12" fill="#161b22" stroke="#30363d"/>
-        <text x="170" y="100" text-anchor="middle" class="svg-text" font-weight="bold">底座模型 W</text>
-        <text x="170" y="126" text-anchor="middle" class="svg-dim">❄️ 全部冻结（不训练）</text>
-        <text x="170" y="150" text-anchor="middle" class="svg-dim">几十 GB，共享复用</text>
-        <rect x="420" y="46" width="220" height="52" rx="10" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
-        <text x="530" y="68" text-anchor="middle" class="svg-text">B 矩阵 + A 矩阵</text>
-        <text x="530" y="86" text-anchor="middle" class="svg-dim" font-size="11">🔥 唯一被训练的部分（几十 MB）</text>
-        <rect x="420" y="140" width="220" height="40" rx="10" fill="rgba(63,185,80,0.08)" stroke="#3fb950"/>
-        <text x="530" y="165" text-anchor="middle" class="svg-text" font-size="11">输出 = W + B×A（低秩增量）</text>
-        <rect x="420" y="200" width="220" height="44" rx="10" fill="#161b22" stroke="#30363d"/>
-        <text x="530" y="218" text-anchor="middle" class="svg-dim" font-size="11">同一个底座可插多个适配器：</text>
-        <text x="530" y="235" text-anchor="middle" class="svg-dim" font-size="11">医疗版 / 法务版 / 客服版 随时切换</text>
-        <line x1="280" y1="100" x2="418" y2="72" stroke="#5b8cff" stroke-width="1.8" fill="none"/>
-        <line x1="280" y1="150" x2="418" y2="160" stroke="#5b8cff" stroke-width="1.8" fill="none"/>
-        <text x="360" y="262" text-anchor="middle" class="svg-dim">LoRA：只训贴在旁边的小矩阵，底座零改动</text>
+        <rect x="60" y="60" width="220" height="120" rx="12" class="cell"/>
+        <text x="170" y="100" text-anchor="middle" font-weight="bold">底座模型 W</text>
+        <text x="170" y="126" text-anchor="middle" class="dim">❄️ 全部冻结（不训练）</text>
+        <text x="170" y="150" text-anchor="middle" class="dim">几十 GB，共享复用</text>
+        <rect x="420" y="46" width="220" height="52" rx="10" stroke-width="2" class="cell-em link"/>
+        <text x="530" y="68" text-anchor="middle">B 矩阵 + A 矩阵</text>
+        <text x="530" y="86" text-anchor="middle" font-size="11" class="dim">🔥 唯一被训练的部分（几十 MB）</text>
+        <rect x="420" y="140" width="220" height="40" rx="10" class="cell-em link-green"/>
+        <text x="530" y="165" text-anchor="middle" font-size="11">输出 = W + B×A（低秩增量）</text>
+        <rect x="420" y="200" width="220" height="44" rx="10" class="cell"/>
+        <text x="530" y="218" text-anchor="middle" font-size="11" class="dim">同一个底座可插多个适配器：</text>
+        <text x="530" y="235" text-anchor="middle" font-size="11" class="dim">医疗版 / 法务版 / 客服版 随时切换</text>
+        <line x1="280" y1="100" x2="418" y2="72" stroke-width="1.8" class="link"/>
+        <line x1="280" y1="150" x2="418" y2="160" stroke-width="1.8" class="link"/>
+        <text x="360" y="262" text-anchor="middle" class="dim">LoRA：只训贴在旁边的小矩阵，底座零改动</text>
       </g>
     </svg>
     <figcaption>图 9：LoRA 原理——底座冻结，只训低秩增量，一个底座配多块"皮肤"</figcaption>
