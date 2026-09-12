@@ -44,7 +44,7 @@ title: Prompt 工程与上下文学习：不训练，也能"教"模型
         <text x="581" y="226" text-anchor="middle" font-size="12" class="dim">"请一步步思考再回答"</text>
         <text x="581" y="250" text-anchor="middle" font-size="12" class="dim">把推理摊开，正确率明显提升</text>
         <line x1="360" y1="130" x2="360" y2="166" stroke-width="2" class="link"/>
-        <polygon points="360,170 355,160 365,160" fill="#5b8cff"/>
+        <polygon points="360,170 355,160 365,160" class="accent-blue-fill"/>
       </g>
     </svg>
     <figcaption>图 2：上下文 = 指令 + 示例 + 资料 + 问题；三种经典写法由弱到强</figcaption>

@@ -10,7 +10,9 @@ title: Agent 核心范式：ReAct、规划、反思与多智能体
 
 一切 Agent 的地基。你把工具的"说明书"（名称、参数 schema、用途描述）随请求发给模型，模型需要时输出一段**结构化的调用意图**：
 
-  <pre><code>{"name": "get_weather", "arguments": {"city": "上海"}}</code></pre>
+```json
+{"name": "get_weather", "arguments": {"city": "上海"}}
+```
 
 注意：**模型自己不执行任何东西**，它只"点名"。真正执行的是你的程序，执行结果再喂回给模型。模型 ↔ 程序之间就是这一来一回的"点菜—上菜"循环。
 
@@ -55,12 +57,14 @@ title: Agent 核心范式：ReAct、规划、反思与多智能体
 
 ## ReAct 循环长什么样？
 
-  <pre><code>用户：帮我把仓库里的 TODO 整理成清单。
+```text
+用户：帮我把仓库里的 TODO 整理成清单。
 Thought: 我需要先找到所有 TODO 标记。
 Action: grep(pattern="TODO", path="src/")
 Observation: src/api.py:12 TODO 校验分页参数；src/db.py:40 TODO 加索引
 Thought: 找到 2 处，直接汇总即可，无需更多工具。
-Final Answer: 共 2 个 TODO：1) api.py 校验分页参数 2) db.py 加索引</code></pre>
+Final Answer: 共 2 个 TODO：1) api.py 校验分页参数 2) db.py 加索引
+```
 
 ## 成熟 Agent 还标配四样"护栏"
 

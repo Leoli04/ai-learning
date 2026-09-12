@@ -10,17 +10,21 @@ title: 动手实践：10 分钟跑起你的第一个 dsh
 
 前提：装好 <a href="https://nodejs.org" target="_blank">Node.js</a>。然后一行命令：
 
-  <pre><code>npx @deepseek-ai/dsh web</code></pre>
+```bash
+npx @deepseek-ai/dsh web
+```
 
 默认会在 `http://127.0.0.1:3080` 启动 Web UI，并自动打开浏览器。加 `--no-open` 可以只启动服务不开浏览器（比如在 SSH 远程服务器上跑）。
 
 ## 方式二：从源码跑（想读代码的话）
 
-  <pre><code>git clone https://github.com/deepseek-ai/deepseek-harness.git
+```bash
+git clone https://github.com/deepseek-ai/deepseek-harness.git
 cd deepseek-harness
 pnpm install
 pnpm run build
-pnpm dsh web</code></pre>
+pnpm dsh web
+```
 ::: warning
 运行前建议先读一遍仓库里的 SAFETY 说明——它毕竟是一个能读写文件、执行命令的 Agent 框架。
 :::
@@ -59,14 +63,16 @@ pnpm dsh web</code></pre>
 
 ## 三个值得马上试的命令
 
-  <pre><code># 看 web Profile 实际加载的完整插件树（调试 patch 神器）
+```bash
+# 看 web Profile 实际加载的完整插件树（调试 patch 神器）
 dsh --profile web --dump-config
 
 # 无界面跑一次性任务
 dsh --profile headless
 
 # 插件管理
-dsh plugin --help</code></pre>
+dsh plugin --help
+```
 
 ## 下一步去哪？
 

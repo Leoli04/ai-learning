@@ -12,10 +12,12 @@ Agent 会调工具后，新问题是：**流程性经验每次都要现场重教
 
 **Skill（技能）**的解法是把方法论打包成文件夹，核心是一个 `SKILL.md`：
 
-  <pre><code>my-skill/
+```text
+my-skill/
 ├── SKILL.md          # 入口：名称、描述、何时触发、操作步骤
 ├── references/       # 详细文档：API 说明、规范细则
-└── scripts/          # 可选：配套可执行脚本</code></pre>
+└── scripts/          # 可选：配套可执行脚本
+```
 
 它不是代码插件，而是**按需加载的说明书**。关键设计是**渐进式披露（Progressive Disclosure）**：平时只有名称和一句话描述占着上下文（几十 token），任务匹配时才读正文，需要细节再翻 references——三层按需加载，几乎不浪费窗口。这套规范由 Anthropic 在 2025 年提出，开源社区（包括各 Harness 框架）迅速跟进，团队可以把技能库放进 git 共享。
 

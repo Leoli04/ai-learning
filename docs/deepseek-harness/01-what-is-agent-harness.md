@@ -29,7 +29,7 @@ Harness 就是把这些东西全部装好，交付给你一辆"能开的车"。
       <text x="85" y="140" text-anchor="middle" font-size="16">你（用户）</text>
       <text x="85" y="162" text-anchor="middle" font-size="12" class="dim">提需求、做审批</text>
       <line x1="150" y1="145" x2="210" y2="145" stroke-width="2" class="link"/>
-      <polygon points="210,145 200,140 200,150" fill="#5b8cff"/>
+      <polygon points="210,145 200,140 200,150" class="accent-blue-fill"/>
       <!-- Harness 大框 -->
       <rect x="215" y="40" width="290" height="220" rx="14" stroke-width="2" class="cell-em link"/>
       <text x="360" y="68" text-anchor="middle" font-size="17" font-weight="bold">Harness（dsh）</text>
@@ -41,7 +41,7 @@ Harness 就是把这些东西全部装好，交付给你一辆"能开的车"。
       <text x="360" y="198" text-anchor="middle" font-size="13">权限审批 · 沙箱隔离</text>
       <text x="360" y="240" text-anchor="middle" font-size="12" class="dim">Agent 循环：想 → 做工具调用 → 看 → 再想</text>
       <line x1="505" y1="145" x2="565" y2="145" stroke-width="2" class="link"/>
-      <polygon points="565,145 555,140 555,150" fill="#5b8cff"/>
+      <polygon points="565,145 555,140 555,150" class="accent-blue-fill"/>
       <!-- LLM -->
       <rect x="570" y="110" width="130" height="70" rx="12" class="cell link-purple"/>
       <text x="635" y="140" text-anchor="middle" font-size="16">LLM</text>
