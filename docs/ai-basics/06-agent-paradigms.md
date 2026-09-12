@@ -69,7 +69,7 @@ Final Answer: 共 2 个 TODO：1) api.py 校验分页参数 2) db.py 加索引</
 - **结构化输出校验**：JSON 不合法就重试；
 - **人工介入点（human-in-the-loop）**：关键决策停下等确认——企业落地的刚需。
 
-  ::: tip
+::: tip
 Agent = **LLM + 工具 + 循环**。范式只回答一个问题：**循环里"下一步"由谁、按什么策略决定**——ReAct 走一步看一步，Plan 先定清单，Reflexion 错了复盘，Multi-Agent 拉团队。
 :::
 

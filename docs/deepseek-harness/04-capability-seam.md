@@ -59,7 +59,7 @@ title: 能力接缝：为什么"换一个零件，改的是整个产品"
 
 Subagent（子智能体）也是一条 Seam：接口后面既可以是"从零启动一个全新的子 Agent"，也可以是"把任务委托给其他产品"。上层消费者完全无感。实验性的 **Agent Teams** 则是在 subagent 之上叠加的进阶 Seam：持久的花名册（roster）、任务看板（task board）和邮箱（mailbox），让多个 Agent 长期协作。
 
-  ::: tip
+::: tip
 Seam = 接口（Definition）+ 干活的（Provider）+ 用功能的（Consumer）。设计新能力时三个都要有；想让能力可替换，就让它只通过 Seam 暴露。
 :::
 

@@ -21,7 +21,7 @@ cd deepseek-harness
 pnpm install
 pnpm run build
 pnpm dsh web</code></pre>
-  ::: warning
+::: warning
 运行前建议先读一遍仓库里的 SAFETY 说明——它毕竟是一个能读写文件、执行命令的 Agent 框架。
 :::
 
@@ -75,6 +75,6 @@ dsh plugin --help</code></pre>
 - 插件开发指南：`docs/user/develop/basic/`
 - 给插件仓库打上 `dsh-plugin` 话题，可以被社区发现
 
-  ::: tip
+::: tip
 01 Harness 是什么 → 02 一切皆插件 → 03 Profile/Bundle/Patch 分层 → 04 Capability Seam → 05 事件三域与 Turn 流 → 06 Session Log 唯一事实源 → 07 动手实践。恭喜读完，现在去看 `--dump-config` 的输出，你会发现每一层都眼熟了。
 :::

@@ -52,7 +52,7 @@ Patch 通过**插件 id 定位一行配置，整行替换或插入新行**。叠
 
 自定义 Profile 和内置 `web` Profile 默认支持 **live patch reload**——patch 一保存，插件树原地热更新。而 `headless`、`sdk` 等"一次性"形态只在启动时应用一次（一次性任务跑一半换依赖，会把生命周期搞坏，官方干脆禁止）。
 
-  ::: tip
+::: tip
 想看你的 dsh 实际加载了什么树？跑一条命令： <pre>`dsh --profile web --dump-config`</pre> 它会把最终生效的完整配置打印出来，是调试 patch 的第一工具。
 :::
 

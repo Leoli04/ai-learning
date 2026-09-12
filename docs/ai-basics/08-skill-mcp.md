@@ -67,7 +67,7 @@ Server 可以暴露三类东西：**Tools**（可执行的操作）、**Resource
     <tr><td>形态</td><td>请求里的 JSON schema</td><td>独立进程 / 服务</td><td>Markdown 文件夹</td></tr>
   </table>
 
-  ::: tip
+::: tip
 **Function Calling 是动作，MCP 是插座标准，Skill 是操作手册。**三者叠加 = 模型能点菜（FC）、菜谱全行业通用（MCP）、老师傅的手艺可以装订成册随取随用（Skill）。
 :::
 
