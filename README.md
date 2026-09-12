@@ -2,19 +2,25 @@
 
 AI 学习笔记站点，两个系列：
 
-## 系列一：AI 基础——发展与技术全景（`ai-basics/`，7 篇）
+## 系列一：AI 基础——发展与技术全景（`ai-basics/`，13 篇）
 
-讲述 AI 这几年的发展脉络、中间出现的技术（Prompt、RAG、Agent/工具调用、Skill、n8n 编排等）各自解决的问题，以及当前仍未解决的难题。
+讲述 AI 这几年的发展脉络、模型怎么炼成、中间出现的技术（Prompt、RAG、向量数据库、Agent 范式、Skill/MCP、LoRA 微调、推理优化、多模态与推理模型、工作流编排等）各自解决的问题，以及主流 Agent 产品技术盘点与当前未解难题。
 
 | # | 文章 | 文件 |
 |---|------|------|
 | 01 | 大模型这几年：时间线与范式转移 | `ai-basics/01-llm-era.html` |
-| 02 | Prompt 工程与上下文学习 | `ai-basics/02-prompt.html` |
-| 03 | RAG：外挂知识库 | `ai-basics/03-rag.html` |
-| 04 | Agent 与工具调用（ReAct / MCP） | `ai-basics/04-agent-tools.html` |
-| 05 | Skill、记忆与上下文工程 | `ai-basics/05-skill-memory.html` |
-| 06 | n8n 与工作流编排 | `ai-basics/06-n8n-workflow.html` |
-| 07 | 当前还没解决的六个问题 | `ai-basics/07-open-problems.html` |
+| 02 | Transformer 与训练三部曲 | `ai-basics/02-transformer-training.html` |
+| 03 | Prompt 工程与上下文学习 | `ai-basics/03-prompt.html` |
+| 04 | RAG：外挂知识库 | `ai-basics/04-rag.html` |
+| 05 | 向量数据库与检索栈 | `ai-basics/05-vector-db.html` |
+| 06 | Agent 核心范式（ReAct / 规划 / 反思 / 多智能体） | `ai-basics/06-agent-paradigms.html` |
+| 07 | 记忆与上下文工程 | `ai-basics/07-memory-context.html` |
+| 08 | Skill 与 MCP | `ai-basics/08-skill-mcp.html` |
+| 09 | 微调与对齐（SFT / LoRA / RLHF / DPO） | `ai-basics/09-finetuning.html` |
+| 10 | 推理优化与部署（KV Cache / 量化 / vLLM） | `ai-basics/10-inference-optimization.html` |
+| 11 | 多模态与推理模型（o1 / R1） | `ai-basics/11-multimodal-reasoning.html` |
+| 12 | 工作流编排与主流 Agent 技术全景 | `ai-basics/12-orchestration-agents.html` |
+| 13 | 当前还没解决的六个问题 | `ai-basics/13-open-problems.html` |
 
 ## 系列二：DeepSeek Harness 通俗图解（`deepseek-harness/`，7 篇）
 

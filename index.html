@@ -15,10 +15,10 @@
 <div class="container">
 <section class="hero">
   <span class="badge">AI 基础系列</span>
-  <span class="badge">RAG · Agent · Skill · n8n</span>
-  <span class="badge">7 篇系列</span>
+  <span class="badge">RAG · Agent · LoRA · n8n</span>
+  <span class="badge">13 篇全景</span>
   <h1>AI 这几年<br><span class="hl">发展与技术全景 · 通俗图解</span></h1>
-  <p class="lead">从 Transformer 到 Agent 时代：这几年出现了哪些技术、各自解决了什么问题、当前还卡在哪。全部图解为手绘 SVG，零依赖离线可读。</p>
+  <p class="lead">从 Transformer 到 Agent 时代：模型怎么炼成、中间出现了哪些技术、各自解决什么问题、主流 Agent 的技术栈长什么样、当前还卡在哪。全部图解为手绘 SVG，零依赖离线可读。</p>
 </section>
 
 <div class="article-list">
@@ -27,33 +27,63 @@
     <h3>大模型这几年：一条时间线看懂范式转移</h3>
     <p>Transformer → 预训练 → ChatGPT 时刻 → 外挂生态，三次"换脑子"各解决一个死结</p>
   </a>
-  <a class="article-card" href="ai-basics/02-prompt.html">
+  <a class="article-card" href="ai-basics/02-transformer-training.html">
     <span class="num">02</span>
+    <h3>Transformer 与训练三部曲</h3>
+    <p>Token / Attention / 接龙式生成；预训练→SFT→RLHF；Scaling Laws 与 MoE</p>
+  </a>
+  <a class="article-card" href="ai-basics/03-prompt.html">
+    <span class="num">03</span>
     <h3>Prompt 工程与上下文学习</h3>
     <p>不训练也能"教"模型：Zero/Few-shot、思维链，以及 Prompt 的天花板</p>
   </a>
-  <a class="article-card" href="ai-basics/03-rag.html">
-    <span class="num">03</span>
-    <h3>RAG：开卷考试，外挂一个知识库</h3>
+  <a class="article-card" href="ai-basics/04-rag.html">
+    <span class="num">04</span>
+    <h3>RAG：开卷考试，外挂知识库</h3>
     <p>治幻觉、接私有数据的第一站：Embedding、切分、检索→塞提示词→作答</p>
   </a>
-  <a class="article-card" href="ai-basics/04-agent-tools.html">
-    <span class="num">04</span>
-    <h3>Agent 与工具调用：从动嘴到动手</h3>
-    <p>Function Calling + ReAct 循环 + MCP——工具生态的 USB-C 标准</p>
-  </a>
-  <a class="article-card" href="ai-basics/05-skill-memory.html">
+  <a class="article-card" href="ai-basics/05-vector-db.html">
     <span class="num">05</span>
-    <h3>Skill、记忆与上下文工程</h3>
-    <p>把老司机的经验固化下来：记忆四层模型，窗口是稀缺资源</p>
+    <h3>向量数据库与检索栈</h3>
+    <p>RAG 的发动机舱：Chunking、HNSW/IVF、混合检索、Rerank、选型表</p>
   </a>
-  <a class="article-card" href="ai-basics/06-n8n-workflow.html">
+  <a class="article-card" href="ai-basics/06-agent-paradigms.html">
     <span class="num">06</span>
-    <h3>n8n 与工作流编排</h3>
-    <p>确定性流水线 + 少量 AI 调味：和自主 Agent 怎么选、怎么融合</p>
+    <h3>Agent 核心范式</h3>
+    <p>Function Calling + ReAct / Plan-and-Execute / Reflexion / Multi-Agent 四范式</p>
   </a>
-  <a class="article-card" href="ai-basics/07-open-problems.html">
+  <a class="article-card" href="ai-basics/07-memory-context.html">
     <span class="num">07</span>
+    <h3>记忆与上下文工程</h3>
+    <p>记忆四层模型（工作/会话/长期/技能）；窗口是稀缺资源，放对比放多重要</p>
+  </a>
+  <a class="article-card" href="ai-basics/08-skill-mcp.html">
+    <span class="num">08</span>
+    <h3>Skill 与 MCP</h3>
+    <p>SKILL.md 渐进式披露；MCP 三方架构——工具生态的 USB-C 标准</p>
+  </a>
+  <a class="article-card" href="ai-basics/09-finetuning.html">
+    <span class="num">09</span>
+    <h3>微调与对齐：SFT、LoRA、RLHF</h3>
+    <p>知识用 RAG、风格靠微调；LoRA 贴膜原理、DPO、蒸馏一张表分清</p>
+  </a>
+  <a class="article-card" href="ai-basics/10-inference-optimization.html">
+    <span class="num">10</span>
+    <h3>推理优化与部署</h3>
+    <p>KV Cache、量化、投机解码、vLLM；API / 自托管 / Ollama 怎么选</p>
+  </a>
+  <a class="article-card" href="ai-basics/11-multimodal-reasoning.html">
+    <span class="num">11</span>
+    <h3>多模态与推理模型</h3>
+    <p>一切皆 token：视觉/语音如何接入；o1 / R1 与 Test-time Compute</p>
+  </a>
+  <a class="article-card" href="ai-basics/12-orchestration-agents.html">
+    <span class="num">12</span>
+    <h3>编排与主流 Agent 全景</h3>
+    <p>n8n / Dify / LangGraph；Claude Code、Cursor、Manus 等产品技术盘点；六层技术栈</p>
+  </a>
+  <a class="article-card" href="ai-basics/13-open-problems.html">
+    <span class="num">13</span>
     <h3>热闹背后的六个"硬骨头"</h3>
     <p>幻觉、Agent 可靠性、成本、评测、数据墙、安全——2026 年仍未解决的问题</p>
   </a>

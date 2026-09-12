@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 · Transformer 与训练三部曲 — AI 基础学习系列</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="../index.html">AI 学习笔记 <span>·</span> AI 基础</a>
+  <nav><a href="../index.html">目录</a></nav>
+</div></header>
+
+<div class="container">
+<article class="article">
+  <div class="kicker">AI 基础学习系列 · 02</div>
+  <h1>Transformer 与训练三部曲：大模型是怎么炼成的</h1>
+  <div class="meta">约 8 分钟 · 关键词：Token、Attention、预训练 / SFT / RLHF、Scaling Laws、MoE</div>
+
+  <h2>先搞懂三个词：Token、Embedding、Attention</h2>
+  <ul>
+    <li><strong>Token</strong>：模型眼里的"字"。文本先被切成 token（约 0.7 个汉字或 0.75 个英文单词一个），模型从头到尾只处理 token 序列；</li>
+    <li><strong>Embedding</strong>：每个 token 被换成一串数字（向量），语义相近的词向量相近——这是后面 RAG、向量库的同一块地基；</li>
+    <li><strong>Attention（注意力）</strong>：Transformer 的心脏。处理每个 token 时，"回看"上下文里的所有 token，按相关性分配权重。<em>"它"指代谁？</em>——注意力会让"它"这个 token 强烈关注前面的候选名词。</li>
+  </ul>
+  <p>模型生成文本的方式朴素得出人意料：<strong>一次预测一个 token</strong>。给定前文，预测下一个最合理的 token，拼上去，再预测下一个——所谓生成，就是不断"接龙"。</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 720 330" xmlns="http://www.w3.org/2000/svg">
+      <g font-size="13">
+        <!-- 输入 -->
+        <rect x="60" y="30" width="600" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
+        <text x="360" y="53" text-anchor="middle" class="svg-text" font-size="12">输入 token 序列：今天 · 天气 · 真 · __</text>
+        <!-- Transformer 块堆叠 -->
+        <rect x="200" y="86" width="320" height="34" rx="8" fill="rgba(91,140,255,0.10)" stroke="#5b8cff" stroke-width="2"/>
+        <text x="360" y="108" text-anchor="middle" class="svg-text" font-size="12">Transformer 层 × N（几十~上百层）</text>
+        <rect x="200" y="128" width="320" height="34" rx="8" fill="#161b22" stroke="#30363d"/>
+        <text x="360" y="150" text-anchor="middle" class="svg-dim" font-size="11">每层 = 自注意力 + 前馈网络</text>
+        <!-- 输出分布 -->
+        <rect x="200" y="182" width="320" height="34" rx="8" fill="rgba(188,140,255,0.10)" stroke="#bc8cff" stroke-width="2"/>
+        <text x="360" y="204" text-anchor="middle" class="svg-text" font-size="12">下一个 token 的概率分布</text>
+        <g font-size="11" class="svg-dim">
+          <text x="250" y="238">好 32%</text><text x="360" y="238">不错 24%</text><text x="470" y="238">糟 18% …</text>
+        </g>
+        <line x1="360" y1="66" x2="360" y2="84" stroke="#5b8cff" stroke-width="1.8"/>
+        <line x1="360" y1="120" x2="360" y2="126" stroke="#5b8cff" stroke-width="1.8"/>
+        <line x1="360" y1="162" x2="360" y2="180" stroke="#5b8cff" stroke-width="1.8"/>
+        <line x1="360" y1="216" x2="360" y2="230" stroke="#5b8cff" stroke-width="1.8"/>
+        <!-- 温度 -->
+        <text x="600" y="204" class="svg-dim" font-size="11">温度参数：</text>
+        <text x="600" y="220" class="svg-dim" font-size="11">低→稳定保守</text>
+        <text x="600" y="236" class="svg-dim" font-size="11">高→发散有创意</text>
+        <!-- 接龙循环 -->
+        <rect x="200" y="262" width="320" height="40" rx="8" fill="rgba(63,185,80,0.08)" stroke="#3fb950"/>
+        <text x="360" y="287" text-anchor="middle" class="svg-text" font-size="12">选中一个 → 拼回输入 → 继续接龙</text>
+        <path d="M 200 282 C 140 282 140 103 198 103" stroke="#3fb950" stroke-width="1.8" fill="none"/>
+        <text x="90" y="200" class="svg-dim" font-size="11">循环直到</text>
+        <text x="90" y="216" class="svg-dim" font-size="11">生成结束</text>
+      </g>
+    </svg>
+    <figcaption>图 2a：LLM 的工作方式——切 token → 过 Transformer 层 → 预测下一个 token → 接龙</figcaption>
+  </figure>
+
+  <h2>训练三部曲：野孩子 → 学徒 → 职场人</h2>
+  <table>
+    <tr><th>阶段</th><th>干什么</th><th>学到什么</th></tr>
+    <tr><td><strong>① 预训练</strong><br>Pre-training</td><td>在互联网规模的海量文本上"猜下一个词"，几十万亿 token</td><td>语言规律 + 世界知识。最贵的一步（千万美元级算力）</td></tr>
+    <tr><td><strong>② 指令微调</strong><br>SFT</td><td>用几万~几十万条"高质量问答示范"继续训练</td><td>学会"按指令办事"的格式：你说问，它答</td></tr>
+    <tr><td><strong>③ 偏好对齐</strong><br>RLHF / DPO</td><td>人类对多个回答排序，模型朝"人类喜欢的方向"调整（DPO 是更简单的替代方案）</td><td>变得有用、诚实、无害——ChatGPT 体验好的关键</td></tr>
+  </table>
+
+  <h3>两个不可不知的架构词</h3>
+  <ul>
+    <li><strong>Scaling Laws（规模定律）</strong>：模型能力随参数量、数据量、算力按可预测的规律提升——这是"堆料军备竞赛"的理论依据，也催生了 2020 年 GPT-3 的"涌现能力"；</li>
+    <li><strong>MoE（混合专家）</strong>：把一个大模型拆成多个"专家"网络，每个 token 只激活其中一小部分。等效于"总参数巨大、单次计算便宜"，DeepSeek-V3/R1 都是 MoE 架构的代表。</li>
+  </ul>
+
+  <div class="tip"><b>✅ 一句话记忆：</b>LLM = Transformer（架构）+ 接龙式生成（机制）+ 三部曲训练（预训练给知识、SFT 给格式、RLHF 给人品）。后面所有的"外挂"，都是在不改这三步的前提下做的增强。</div>
+
+  <p>模型炼成了，怎么"不训练就指挥它"？下一篇：<strong>Prompt 工程与上下文学习</strong>。</p>
+</article>
+
+<div class="pager">
+  <a class="prev" href="01-llm-era.html"><span class="dir">← 上一篇</span>大模型这几年</a>
+  <a class="next" href="03-prompt.html"><span class="dir">下一篇 →</span>Prompt 工程与上下文学习</a>
+</div>
+</div>
+
+<footer class="site-footer">AI 基础学习系列 · 通俗图解笔记，仅供学习交流</footer>
+</body>
+</html>
