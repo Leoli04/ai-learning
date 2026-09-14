@@ -47,7 +47,7 @@ title: Prompt 工程与上下文学习：不训练，也能"教"模型
         <polygon points="360,170 355,160 365,160" class="accent-blue-fill"/>
       </g>
     </svg>
-    <figcaption>图 2：上下文 = 指令 + 示例 + 资料 + 问题；三种经典写法由弱到强</figcaption>
+    <figcaption>图 3：上下文 = 指令 + 示例 + 资料 + 问题；三种经典写法由弱到强</figcaption>
   </figure>
 
 ## 几条最划算的 Prompt 实践

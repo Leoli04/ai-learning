@@ -3,7 +3,7 @@
 from pathlib import Path
 import re
 
-ROOT = Path(r"F:\lixiaofei\WorkBuddy\技术\ai-learning\docs")
+ROOT = Path(__file__).resolve().parent.parent / "docs"
 issues = []
 
 for md in sorted(ROOT.rglob("*.md")):

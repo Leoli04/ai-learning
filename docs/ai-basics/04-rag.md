@@ -60,7 +60,7 @@ title: RAG：开卷考试——给模型外挂一个知识库
         <line x1="635" y1="200" x2="525" y2="248" stroke-width="1.8" marker-end="url(#ra)" class="link-green"/>
       </g>
     </svg>
-    <figcaption>图 3：RAG 两阶段——离线建库 + 在线"检索→塞进提示词→作答"</figcaption>
+    <figcaption>图 4：RAG 两阶段——离线建库 + 在线"检索→塞进提示词→作答"</figcaption>
   </figure>
 
 ## 两个关键词
