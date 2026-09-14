@@ -40,7 +40,7 @@ title: 大模型这几年：一条时间线看懂范式转移
         <circle cx="60" cy="330" r="5" class="accent-red-fill"/>
         <text x="80" y="325" font-weight="bold">2025+ · Agent 时代</text>
         <text x="80" y="342" class="dim">编码 Agent、开源 Harness、Skill / 多 Agent 协作成为主线</text>
-        <text x="640" y="380" font-size="11" class="dim">自下而上：能力越来越强，离"干活"越来越近</text>
+        <text x="660" y="380" font-size="11" text-anchor="end" class="dim">自下而上：能力越来越强，离"干活"越来越近</text>
       </g>
     </svg>
     <figcaption>图 1：大模型发展时间线——从"会聊天"到"会干活"</figcaption>
