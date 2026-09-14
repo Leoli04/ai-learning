@@ -153,6 +153,23 @@ for md in sorted(ROOT.rglob("*.md")):
                     f'{rel}: 图{fig_no} 文字超出上边界 (y {y0:.0f} < 0): "{content[:30]}"'
                 )
 
+    # 11. No blank line inside <figure>/<table> blocks.
+    # markdown-it terminates an HTML block at a blank line; the rest then gets
+    # parsed as Markdown (4-space indent -> <pre><code>), leaving tags unclosed
+    # and breaking the VitePress build with "Element is missing end tag".
+    depth = 0
+    for lineno, l in enumerate(lines, 1):
+        if re.match(r"\s*<(figure|table)\b", l):
+            depth += 1
+        elif re.match(r"\s*</(figure|table)>", l):
+            depth = max(0, depth - 1)
+        elif depth > 0 and l.strip() == "":
+            issues.append(
+                f"{rel}: 第 {lineno} 行在 <figure>/<table> 块内出现空行——"
+                f"markdown-it 会在此终止 HTML 块，导致标签未闭合、构建失败"
+            )
+            break
+
 if issues:
     print(f"FOUND {len(issues)} issues:")
     for i in issues:

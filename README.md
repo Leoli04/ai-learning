@@ -1,6 +1,6 @@
 # ai-learning
 
-AI 学习笔记站点，基于 **VitePress**（Vue 官方文档同款）构建，两个系列共 34 篇图解文章。
+AI 学习笔记站点，基于 **VitePress**（Vue 官方文档同款）构建，四个系列共 50 个页面（49 篇图解长文 + 1 个可搜索资源导航页）。
 
 ## 系列一：AI 基础——发展与技术全景（`docs/ai-basics/`，20 篇）
 
@@ -50,6 +50,40 @@ AI 学习笔记站点，基于 **VitePress**（Vue 官方文档同款）构建�
 | 13 | 横向对比：dsh 和其他 Agent Harness 的取舍 | `docs/deepseek-harness/13-comparison.md` |
 | 14 | 源码导读：这个仓库长什么样 | `docs/deepseek-harness/14-source-tour.md` |
 
+## 系列三：企业知识库实战（`docs/kb-practice/`，11 篇）
+
+面向真实落地场景，拆解"企业一堆文档 → 一个真能用的问答系统"的全流程：数据地基（解析 / 切分 / 元数据）、检索调优（Embedding / 混合检索 / badcase 闭环）、工程刚需（权限与多租户 / 增量更新），最后是评测上线与进阶方案的适用边界。
+
+| # | 文章 | 文件 |
+|---|------|------|
+| 01 | 为什么企业知识库总是"能演示、不能用" | `docs/kb-practice/01-why-hard.md` |
+| 02 | 数据接入第一关：PDF、扫描件与表格解析 | `docs/kb-practice/02-parsing.md` |
+| 03 | 切分策略：chunk 怎么切才不丢信息 | `docs/kb-practice/03-chunking.md` |
+| 04 | 元数据设计：让检索能按部门、时间、类型过滤 | `docs/kb-practice/04-metadata.md` |
+| 05 | Embedding 选型：中文场景怎么挑模型 | `docs/kb-practice/05-embedding.md` |
+| 06 | 混合检索：BM25 + 向量 + Rerank 三件套 | `docs/kb-practice/06-hybrid-retrieval.md` |
+| 07 | 检索调优：查询改写、多路召回与 badcase 闭环 | `docs/kb-practice/07-tuning-loop.md` |
+| 08 | 权限与多租户：谁能看哪些文档 | `docs/kb-practice/08-permissions.md` |
+| 09 | 增量更新与版本管理：文档改了、删了怎么办 | `docs/kb-practice/09-incremental-update.md` |
+| 10 | 评测与上线：怎么证明它"答得准" | `docs/kb-practice/10-evaluation-launch.md` |
+| 11 | 进阶：GraphRAG / Agentic RAG 的适用边界 | `docs/kb-practice/11-advanced-rag-choices.md` |
+
+## 系列四：AI 资源地图（`docs/ai-sites/`）
+
+把值得长期关注的 AI 站点按用途收成一张**可搜索、可按标签筛选**的地图。站点清单存放在 `docs/.vitepress/theme/ai-sites.js`，页面由 `AiSites.vue` 渲染——**新增站点只需改数据文件，不用动页面**。
+
+每条都写清"为什么值得看"，并标注语言、是否国内可直连（需代理的会明确标出），页面顶部显示最近核实日期。
+
+| # | 页面 | 文件 |
+|---|------|------|
+| — | AI 资源地图（可搜索 · 按标签筛选） | `docs/ai-sites/index.md` |
+| 01 | 模型与数据：模型库、数据集、练手平台 | `docs/ai-sites/01-model-hub.md` |
+| 02 | 论文与前沿：从"知道有这篇"到"读懂这篇" | `docs/ai-sites/02-papers-frontier.md` |
+| 03 | 评测与榜单：分数怎么读，坑在哪里 | `docs/ai-sites/03-benchmarks.md` |
+| 04 | 学习、资讯与社区：跟谁学，在哪聊 | `docs/ai-sites/04-learn-community.md` |
+
+四篇分类指南各配一张图解，讲的不是"有哪些站"，而是**用法与坑**：模型许可证与量化版本怎么查、论文怎么用日榜建立基线再用引用图追脉络、榜单的五个追问、以及学习三个阶段的材料顺序。站点的可达性与核实日期记录在数据文件里，详情页只引用结论。
+
 ## 本地开发
 
 需要 Node.js ≥ 18：
@@ -61,7 +95,14 @@ npm run build      # 构建产物到 docs/.vitepress/dist
 npm run preview    # 本地预览构建产物
 ```
 
-新文章写法：在 `docs/ai-basics/`（或 `docs/deepseek-harness/`）新建 `.md` 文件，然后在 `docs/.vitepress/config.mjs` 的 sidebar 里加一行即可。
+新文章写法：在对应系列目录（`docs/ai-basics/`、`docs/deepseek-harness/`、`docs/kb-practice/`、`docs/ai-sites/`）新建 `.md` 文件，然后在 `docs/.vitepress/config.mjs` 的 sidebar 里加一行即可。
+
+写图解文章有几条硬性约定（都是踩过坑之后固化下来的，已被自检脚本覆盖）：
+
+- **`<figure>` / `<table>` 块内不能出现空行**——markdown-it 在空行处终止 HTML 块，余下内容会被当成 Markdown（缩进 4 空格就变代码块），导致标签未闭合、构建直接失败且报错行号极具误导性。
+- **SVG 里所有 `<text>` 都不能越出 viewBox**——超出部分会被静默裁掉，页面上只显示半句。
+- **SVG 只用主题 CSS 类**（`.cell` / `.cell-em` / `accent-*-fill` / `dim` / `em`），禁止硬编码 hex 颜色，否则暗色主题下会看不清。
+- **`::: tip` 等容器必须顶格写**，行首不能有缩进。
 
 ## GitHub Actions 部署
 
@@ -76,7 +117,7 @@ npm run preview    # 本地预览构建产物
 ## 后续扩展
 
 - 每学一个新主题，在 `docs/` 下新建子目录写 Markdown，并在 `config.mjs` 注册 nav/sidebar 入口。
-- 写完后跑 `python scripts/health-check.py` 自检（frontmatter、meta 行、代码围栏与容器配对、figure 配对、SVG 闭合、禁止硬编码 SVG 颜色等 10 项）。
+- 写完后跑 `python scripts/health-check.py` 自检（frontmatter、meta 行、代码围栏与容器配对、figure 配对、SVG 闭合、禁止硬编码 SVG 颜色、SVG 文字越界、HTML 块内空行等 11 项）。
 
 ### 候选选题（尚未开写）
 
@@ -84,7 +125,6 @@ npm run preview    # 本地预览构建产物
 |------|------|
 | AI 工程实战 | 评测集搭建、CI 里跑回归、成本与延迟看板、灰度与回滚 |
 | Agentic Coding 实践 | 规格驱动开发、上下文管理、人机分工的代码评审 |
-| 企业知识库实战 | PDF/表格解析、分块与元数据、权限与多租户、调优闭环 |
 | 论文精读（图解版） | Attention Is All You Need、LoRA、ReAct、DPO、MCP 规范等 |
 | 站点番外 | 术语表中英对照、按角色的学习路线图、一页速查卡 |
 

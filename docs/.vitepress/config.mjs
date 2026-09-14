@@ -17,7 +17,9 @@ export default defineConfig({
     ],
     nav: [
       { text: 'AI 基础', link: '/ai-basics/01-llm-era' },
-      { text: 'DeepSeek Harness', link: '/deepseek-harness/01-what-is-agent-harness' }
+      { text: '企业知识库', link: '/kb-practice/01-why-hard' },
+      { text: 'DeepSeek Harness', link: '/deepseek-harness/01-what-is-agent-harness' },
+      { text: 'AI 资源地图', link: '/ai-sites/' }
     ],
     sidebar: {
       '/ai-basics/': [
@@ -127,6 +129,62 @@ export default defineConfig({
             { text: '12 · 多形态运行', link: '/deepseek-harness/12-run-modes' },
             { text: '13 · 横向对比其他 Harness', link: '/deepseek-harness/13-comparison' },
             { text: '14 · 源码导读', link: '/deepseek-harness/14-source-tour' }
+          ]
+        }
+      ],
+      '/kb-practice/': [
+        {
+          text: '第一部分 · 数据地基',
+          collapsed: false,
+          items: [
+            { text: '01 · 为什么总是"能演示、不能用"', link: '/kb-practice/01-why-hard' },
+            { text: '02 · 数据接入第一关', link: '/kb-practice/02-parsing' },
+            { text: '03 · 切分策略', link: '/kb-practice/03-chunking' },
+            { text: '04 · 元数据设计', link: '/kb-practice/04-metadata' }
+          ]
+        },
+        {
+          text: '第二部分 · 检索调优',
+          collapsed: false,
+          items: [
+            { text: '05 · Embedding 选型', link: '/kb-practice/05-embedding' },
+            { text: '06 · 混合检索三件套', link: '/kb-practice/06-hybrid-retrieval' },
+            { text: '07 · 检索调优与 badcase 闭环', link: '/kb-practice/07-tuning-loop' }
+          ]
+        },
+        {
+          text: '第三部分 · 工程刚需',
+          collapsed: false,
+          items: [
+            { text: '08 · 权限与多租户', link: '/kb-practice/08-permissions' },
+            { text: '09 · 增量更新与版本管理', link: '/kb-practice/09-incremental-update' }
+          ]
+        },
+        {
+          text: '第四部分 · 验收与进阶',
+          collapsed: false,
+          items: [
+            { text: '10 · 评测与上线', link: '/kb-practice/10-evaluation-launch' },
+            { text: '11 · 进阶：GraphRAG / Agentic RAG', link: '/kb-practice/11-advanced-rag-choices' }
+          ]
+        }
+      ],
+      '/ai-sites/': [
+        {
+          text: '导航',
+          collapsed: false,
+          items: [
+            { text: '资源地图（可搜索 · 按标签筛选）', link: '/ai-sites/' }
+          ]
+        },
+        {
+          text: '分类指南',
+          collapsed: false,
+          items: [
+            { text: '01 · 模型与数据', link: '/ai-sites/01-model-hub' },
+            { text: '02 · 论文与前沿', link: '/ai-sites/02-papers-frontier' },
+            { text: '03 · 评测与榜单', link: '/ai-sites/03-benchmarks' },
+            { text: '04 · 学习、资讯与社区', link: '/ai-sites/04-learn-community' }
           ]
         }
       ]
