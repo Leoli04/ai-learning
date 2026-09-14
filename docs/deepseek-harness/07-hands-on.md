@@ -82,5 +82,5 @@ dsh plugin --help
 - 给插件仓库打上 `dsh-plugin` 话题，可以被社区发现
 
 ::: tip
-01 Harness 是什么 → 02 一切皆插件 → 03 Profile/Bundle/Patch 分层 → 04 Capability Seam → 05 事件三域与 Turn 流 → 06 Session Log 唯一事实源 → 07 动手实践。恭喜读完，现在去看 `--dump-config` 的输出，你会发现每一层都眼熟了。
+第一部分（架构）读完了：01 Harness 是什么 → 02 一切皆插件 → 03 Profile/Bundle/Patch 分层 → 04 Capability Seam → 05 事件三域与 Turn 流 → 06 Session Log 唯一事实源 → 07 动手实践。现在去看 `--dump-config` 的输出，你会发现每一层都眼熟了。接下来进入第二部分（动手扩展）：**08 写一个真实插件** → 09 权限与审批 → 10 接入模型 → 11 Skill 与约定；再到第三部分：12 多形态运行 → 13 横向对比 → 14 源码导读。
 :::

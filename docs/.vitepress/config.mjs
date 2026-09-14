@@ -63,11 +63,42 @@ export default defineConfig({
             { text: '12 · 编排与主流 Agent 全景', link: '/ai-basics/12-orchestration-agents' },
             { text: '13 · 当前还没解决的问题', link: '/ai-basics/13-open-problems' }
           ]
+        },
+        {
+          text: '模块六 · 生成与评测',
+          collapsed: false,
+          items: [
+            { text: '14 · 生成式视觉：扩散模型', link: '/ai-basics/14-generative-vision' },
+            { text: '15 · 评测与可观测性', link: '/ai-basics/15-eval-observability' }
+          ]
+        },
+        {
+          text: '模块七 · 检索进阶与语音',
+          collapsed: false,
+          items: [
+            { text: '16 · 进阶 RAG', link: '/ai-basics/16-advanced-rag' },
+            { text: '17 · 语音栈：能听会说', link: '/ai-basics/17-speech-stack' }
+          ]
+        },
+        {
+          text: '模块八 · 安全与协作',
+          collapsed: false,
+          items: [
+            { text: '18 · Agent 安全与权限边界', link: '/ai-basics/18-agent-security' },
+            { text: '19 · 多智能体协作', link: '/ai-basics/19-multi-agent' }
+          ]
+        },
+        {
+          text: '模块九 · 落地与部署',
+          collapsed: false,
+          items: [
+            { text: '20 · 本地化部署与开源模型', link: '/ai-basics/20-local-models' }
+          ]
         }
       ],
       '/deepseek-harness/': [
         {
-          text: 'DeepSeek Harness 系列',
+          text: '第一部分 · 架构拆解',
           collapsed: false,
           items: [
             { text: '01 · 什么是 Agent Harness', link: '/deepseek-harness/01-what-is-agent-harness' },
@@ -75,8 +106,27 @@ export default defineConfig({
             { text: '03 · 启动分层：Profile/Bundle/Patch', link: '/deepseek-harness/03-profile-bundle-patch' },
             { text: '04 · 能力接缝（Capability Seam）', link: '/deepseek-harness/04-capability-seam' },
             { text: '05 · 事件三域与 Turn 执行流', link: '/deepseek-harness/05-events-and-turn-flow' },
-            { text: '06 · Session Log：唯一事实源', link: '/deepseek-harness/06-session-log' },
-            { text: '07 · 动手实践：10 分钟跑起来', link: '/deepseek-harness/07-hands-on' }
+            { text: '06 · Session Log：唯一事实源', link: '/deepseek-harness/06-session-log' }
+          ]
+        },
+        {
+          text: '第二部分 · 动手扩展',
+          collapsed: false,
+          items: [
+            { text: '07 · 动手实践：10 分钟跑起来', link: '/deepseek-harness/07-hands-on' },
+            { text: '08 · 写一个真实插件', link: '/deepseek-harness/08-first-plugin' },
+            { text: '09 · 权限与审批', link: '/deepseek-harness/09-permissions-approval' },
+            { text: '10 · 接入你自己的模型', link: '/deepseek-harness/10-model-providers' },
+            { text: '11 · Skill 与项目约定', link: '/deepseek-harness/11-skills-and-conventions' }
+          ]
+        },
+        {
+          text: '第三部分 · 形态与全景',
+          collapsed: false,
+          items: [
+            { text: '12 · 多形态运行', link: '/deepseek-harness/12-run-modes' },
+            { text: '13 · 横向对比其他 Harness', link: '/deepseek-harness/13-comparison' },
+            { text: '14 · 源码导读', link: '/deepseek-harness/14-source-tour' }
           ]
         }
       ]
