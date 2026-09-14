@@ -37,17 +37,7 @@ features:
     linkText: 进入系列
   - icon: 🗺️
     title: 系列四 · AI 资源地图
-    details: 70+ 个值得收藏的站点一张表：分类、一句话定位、语言、是否需代理、核实日期——带实时搜索与标签筛选，并按模型、论文、评测、社区四类写了深度点评。
+    details: 76 个值得收藏的站点一张表：分类、一句话定位、语言、是否需代理、核实日期——带实时搜索与标签筛选，并按模型、论文、评测、社区四类写了深度点评。
     link: /ai-sites/
     linkText: 打开地图
-  - icon: 🧪
-    title: 补齐"上线才会疼"的短板
-    details: 生成式视觉、评测与可观测、Agent 安全与提示注入、多智能体协作、本地化部署——这些不是炫技，而是真正落地时最先暴露的缺口。
-    link: /ai-basics/14-generative-vision
-    linkText: 从第 14 篇看起
-  - icon: 🎨
-    title: 全程图解 · 通俗类比
-    details: 拒绝堆术语：发动机与整车、开卷考试、千层饼、USB-C……每个概念配一张手绘 SVG 图，看完就能给别人讲明白，且无需联网。
-    link: /ai-basics/01-llm-era
-    linkText: 看看图长什么样
 ---
