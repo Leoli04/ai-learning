@@ -10,11 +10,11 @@ hero:
       text: 开始阅读：AI 基础系列
       link: /ai-basics/01-llm-era
     - theme: alt
-      text: 企业知识库实战
-      link: /kb-practice/01-why-hard
-    - theme: alt
       text: DeepSeek Harness 系列
       link: /deepseek-harness/01-what-is-agent-harness
+    - theme: alt
+      text: 企业知识库实战
+      link: /kb-practice/01-why-hard
     - theme: alt
       text: AI 资源地图
       link: /ai-sites/
@@ -37,7 +37,7 @@ features:
     linkText: 进入系列
   - icon: 🗺️
     title: 系列四 · AI 资源地图
-    details: 76 个值得收藏的站点一张表：分类、一句话定位、语言、是否需代理、核实日期——带实时搜索与标签筛选，并按模型、论文、评测、社区四类写了深度点评。
+    details: 88 个值得收藏的站点一张表：分类、一句话定位、语言、是否需代理、核实日期——带实时搜索与标签筛选，模型、论文、评测、社区四类写了深度点评，另设 Skill 专节讲去哪找、怎么装才安全。
     link: /ai-sites/
     linkText: 打开地图
 ---

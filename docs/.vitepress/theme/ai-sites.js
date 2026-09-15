@@ -7,6 +7,7 @@ export const categories = [
   { key: 'learn', label: '学习与课程', desc: '长文博客、公开课、图解教程' },
   { key: 'news', label: '资讯与社区', desc: '周报、播客、真实讨论' },
   { key: 'tool', label: '工具与框架', desc: '编排、RAG、向量库、编码助手' },
+  { key: 'skill', label: 'Agent Skills', desc: '技能标准、技能市场与精选技能集' },
   { key: 'cn', label: '中文生态', desc: '中文社区、厂商文档、本土媒体' }
 ]
 
@@ -80,6 +81,19 @@ export const sites = [
   { name: 'Claude Code', url: 'https://claude.com/product/claude-code', cat: 'tool', lang: 'en', access: 'direct', note: '终端里的编码 Agent，适合跨文件、跨仓库的任务' },
   { name: 'MCP 官方站', url: 'https://modelcontextprotocol.io', cat: 'tool', lang: 'en', access: 'direct', note: '工具接入协议的规范文档，自己写工具接入必读' },
   { name: 'Awesome LLM', url: 'https://github.com/Hannibal046/Awesome-LLM', cat: 'tool', lang: 'en', access: 'direct', note: '汇总型清单仓库，顺着它找细分方向的入口' },
+
+  { name: 'Agent Skills 开放标准', url: 'https://agentskills.io', cat: 'skill', lang: 'en', access: 'proxy', note: 'Skill 格式的官方规范站，SKILL.md 怎么写字段、目录怎么组织都在这里定死' },
+  { name: 'Anthropic 官方 Skill 仓库', url: 'https://github.com/anthropics/skills', cat: 'skill', lang: 'en', access: 'direct', note: '官方示例技能集中地，含 docx/pdf/pptx/xlsx 四类文档技能与最简模板 template' },
+  { name: 'skill-creator（元技能）', url: 'https://github.com/anthropics/skills/tree/main/skills/skill-creator', cat: 'skill', lang: 'en', access: 'direct', note: '写 Skill 的 Skill，会反过来问清你的流程再生成目录与 SKILL.md，第一站' },
+  { name: 'skills.sh', url: 'https://skills.sh', cat: 'skill', lang: 'en', access: 'proxy', note: '官方技能分发中心与热度榜，支持 npx skills add 一键安装，选之前先看排名' },
+  { name: 'ClawHub', url: 'https://clawhub.ai', cat: 'skill', lang: 'en', access: 'direct', note: 'OpenClaw 官方技能注册中心，规模最大也最杂，必须挑带良性标记的' },
+  { name: '腾讯云 SkillHub', url: 'https://skillhub.tencent.com', cat: 'skill', lang: 'zh', access: 'direct', note: '国内高速镜像，中文搜索加精选 Top 50 安全审计榜，与 WorkBuddy 等框架兼容' },
+  { name: '复旦 DataHub Skills', url: 'http://www.fudankw.cn:18000/search-skills.html', cat: 'skill', lang: 'zh', access: 'direct', note: '高校团队的百万级技能库，按质量与安全双维度给每个技能打分排序' },
+  { name: 'Awesome Agent Skills', url: 'https://github.com/VoltAgent/awesome-agent-skills', cat: 'skill', lang: 'en', access: 'direct', note: '跨平台精选集，收了不少大厂官方技能，三百多条且分好类' },
+  { name: 'Superpowers', url: 'https://github.com/obra/superpowers', cat: 'skill', lang: 'en', access: 'direct', note: '一套成体系的开发方法论技能：先出规格、再写计划、红绿测试、子代理协作' },
+  { name: 'Hugging Face Skills', url: 'https://github.com/huggingface/skills', cat: 'skill', lang: 'en', access: 'direct', note: 'HF 官方技能，把模型下载、数据集处理、推理部署这些操作固化下来' },
+  { name: 'Awesome Claude Skills 目录', url: 'https://awesomeclaude.ai/awesome-claude-skills', cat: 'skill', lang: 'en', access: 'direct', note: '可视化技能目录，带 Star 数与用途分类，比翻 GitHub 列表好筛' },
+  { name: 'Trail of Bits Skills', url: 'https://github.com/trailofbits/skills', cat: 'skill', lang: 'en', access: 'direct', note: '知名安全公司出的技能集，专治密钥泄漏、提示注入这类 Agent 安全坑' },
 
   { name: '机器之心', url: 'https://www.jiqizhixin.com', cat: 'cn', lang: 'zh', access: 'direct', note: '中文 AI 媒体里技术含量较高，论文解读较多' },
   { name: '量子位', url: 'https://www.qbitai.com', cat: 'cn', lang: 'zh', access: 'direct', note: '中文 AI 资讯，更新速度快、覆盖面广' },
