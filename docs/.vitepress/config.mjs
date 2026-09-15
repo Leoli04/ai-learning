@@ -184,7 +184,8 @@ export default defineConfig({
             { text: '01 · 模型与数据', link: '/ai-sites/01-model-hub' },
             { text: '02 · 论文与前沿', link: '/ai-sites/02-papers-frontier' },
             { text: '03 · 评测与榜单', link: '/ai-sites/03-benchmarks' },
-            { text: '04 · 学习、资讯与社区', link: '/ai-sites/04-learn-community' }
+            { text: '04 · 学习、资讯与社区', link: '/ai-sites/04-learn-community' },
+            { text: '05 · Skill：去哪找，装之前查什么', link: '/ai-sites/05-skills' }
           ]
         }
       ]

@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "AI 学习笔记"
   text: "AI 基础与 Agent 技术 · 通俗图解系列"
-  tagline: 从 Transformer 到 Agent 时代：四个系列、49 篇图解笔记，讲清 AI 的技术脉络与企业落地的真实难点——每篇配手绘 SVG 图解，通俗易懂，离线可读
+  tagline: 从 Transformer 到 Agent 时代：四个系列、50 篇图解笔记，讲清 AI 的技术脉络与企业落地的真实难点——每篇配手绘 SVG 图解，通俗易懂，离线可读
   actions:
     - theme: brand
       text: 开始阅读：AI 基础系列
@@ -37,7 +37,7 @@ features:
     linkText: 进入系列
   - icon: 🗺️
     title: 系列四 · AI 资源地图
-    details: 88 个值得收藏的站点一张表：分类、一句话定位、语言、是否需代理、核实日期——带实时搜索与标签筛选，模型、论文、评测、社区四类写了深度点评，另设 Skill 专节讲去哪找、怎么装才安全。
+    details: 88 个值得收藏的站点一张表：分类、一句话定位、语言、是否需代理、核实日期——带实时搜索与标签筛选，另有五篇分类指南，从模型选型、论文筛选、榜单读取到 Skill 的安全核验。
     link: /ai-sites/
     linkText: 打开地图
 ---
