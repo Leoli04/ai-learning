@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
+    "prepare-build": "node scripts/prepare-build.mjs",
+    "prebuild": "node scripts/prepare-build.mjs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs"
   },

@@ -1,6 +1,7 @@
 node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+docs/.vitepress/.trash/
 docs/.vitepress/config.mjs.timestamp-*
 .dev.log
 .playwright-cli/
